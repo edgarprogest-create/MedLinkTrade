@@ -21,10 +21,23 @@
   .fade2 { animation: fadeUp 0.7s 0.1s both; }
   .fade3 { animation: fadeUp 0.7s 0.2s both; }
   .fade4 { animation: fadeUp 0.7s 0.3s both; }
+
+  @media (max-width: 640px) {
+    .wrap { padding-left: 16px !important; padding-right: 16px !important; }
+    .band { padding-left: 22px !important; padding-right: 22px !important; }
+    footer { padding: 34px 22px !important; }
+    header { flex-wrap: wrap; gap: 12px; }
+    header nav { gap: 16px !important; font-size: 13px !important; flex-wrap: wrap; }
+    nav[aria-label] { flex-wrap: nowrap !important; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    nav[aria-label]::-webkit-scrollbar { display: none; }
+    nav[aria-label] button { flex: 0 0 auto; }
+    .scrollx { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+    .scrollx img { min-width: 640px; }
+  }
 </style>
 </helmet>
 
-<div style="max-width:1280px;margin:0 auto;padding:0 28px 0;overflow:hidden">
+<div class="wrap" style="max-width:1280px;margin:0 auto;padding:0 28px 0;overflow:hidden">
 
   <header style="display:flex;align-items:center;justify-content:space-between;padding:22px 0">
     <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:21px;letter-spacing:-0.02em">MedLink <span style="color:#FF6A00">Forklifts</span></span>
