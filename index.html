@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MedLink Trade — Importação direta de fábrica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fff; -webkit-font-smoothing: antialiased; font-family: 'Inter', system-ui, sans-serif; color: #16171a; }
+  a { color: inherit; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-3%,2%) scale(1.06); } 100% { transform: translate(0,0) scale(1); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade1 { animation: fadeUp 0.7s both; }
+  .fade2 { animation: fadeUp 0.7s 0.1s both; }
+  .fade3 { animation: fadeUp 0.7s 0.2s both; }
+  .fade4 { animation: fadeUp 0.7s 0.3s both; }
+</style>
+</helmet>
+
+<div style="max-width:1280px;margin:0 auto;padding:0 28px 0">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;padding:22px 0">
+    <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:21px;letter-spacing:-0.02em">MedLink <span style="color:#FF6A00">Trade</span></span>
+    <nav style="display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500">
+      <a href="#servicos" style="text-decoration:none">Serviços</a>
+      <a href="#simulador" style="text-decoration:none">Simulador</a>
+      <a href="tel:+351965349393" style="text-decoration:none;background:#FF6A00;color:#fff;padding:10px 18px;border-radius:999px;font-weight:600" style-hover="background:#e85d00">+351 965 349 393</a>
+    </nav>
+  </header>
+
+  <section style="position:relative;padding:64px 0 88px;text-align:center;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:900px;height:640px;background:radial-gradient(closed at center, transparent, transparent);background-image:radial-gradient(circle at 30% 30%, rgba(255,106,0,0.22), transparent 60%),radial-gradient(circle at 70% 60%, rgba(255,71,71,0.16), transparent 55%);filter:blur(10px);animation:drift 14s ease-in-out infinite;z-index:0"></div>
+    <div style="position:relative;z-index:1">
+      <span class="fade1" style="display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#FF6A00;background:#FFF1E6;padding:7px 16px;border-radius:999px;margin-bottom:22px">Fornecedor direto de fábrica</span>
+      <h1 class="fade2" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-0.03em;margin:0 0 20px;text-wrap:balance">Equipamento e habitação modular, direto da fábrica para o seu projeto</h1>
+      <p class="fade3" style="font-size:18px;line-height:1.6;max-width:52ch;margin:0 auto 34px;color:#4b4d54">Equipamento e habitação modular personalizados, com tonelagem, capacidade e acabamento à medida do seu projeto — um único fornecedor, um único contacto.</p>
+      <div class="fade4" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+        <a href="#simulador" style="text-decoration:none;background:#16171a;color:#fff;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px" style-hover="background:#2b2d33">Experimentar o simulador</a>
+        <a href="tel:+351965349393" style="text-decoration:none;background:#fff;color:#16171a;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;border:1.5px solid #eee" style-hover="border-color:#FF6A00;color:#FF6A00">+351 965 349 393</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="simulador" style="padding:20px 0 44px;background:linear-gradient(180deg,#FFF6EE,transparent);border-radius:24px">
+    <h6 style="color:#FF6A00;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px">Experimente</h6>
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,32px);letter-spacing:-0.01em;margin:0 0 14px">Como Funciona o Simulador</h3>
+    <p style="font-size:15px;line-height:1.65;color:#4b4d54;max-width:70ch;margin:0 0 36px">A simulação online é apenas o ponto de partida para materializar a sua ideia. Nenhum pagamento é efetuado sem o nosso acompanhamento direto e a validação de todos os detalhes técnicos do seu projeto. Experimente abaixo o percurso completo, do primeiro clique à aprovação final.</p>
+
+    <div style="border-radius:24px;background:#fafafa;padding:36px;max-width:640px;margin:0 auto">
+
+      <div style="display:flex;justify-content:center;gap:26px;margin-bottom:30px">
+        <sc-for list="{{ stages }}" as="st" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+            <span style="width:9px;height:9px;border-radius:50%;background:{{ st.dot }}"></span>
+            <span style="font-size:11px;font-weight:600;color:{{ st.color }}">{{ st.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ isScreen0 }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;text-align:center;margin:0 0 20px">Passo 1 · Sobre que produto é a sua ideia?</h4>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+            <button type="button" onClick="{{ pickCasas }}" style="cursor:pointer;border:1.5px solid #eee;background:#fff;border-radius:16px;padding:22px;text-align:left;transition:border-color 0.2s" style-hover="border-color:#FF6A00">
+              <div style="font-weight:700;font-size:16px;margin-bottom:4px">Casas modulares</div>
+              <div style="font-size:13px;color:#6b7280">Configure tipologia, acabamentos e transporte</div>
+            </button>
+            <button type="button" onClick="{{ pickFork }}" style="cursor:pointer;border:1.5px solid #eee;background:#fff;border-radius:16px;padding:22px;text-align:left;transition:border-color 0.2s" style-hover="border-color:#FF6A00">
+              <div style="font-weight:700;font-size:16px;margin-bottom:4px">Empilhadores elétricos</div>
+              <div style="font-size:13px;color:#6b7280">Configure modelo e quantidade</div>
+            </button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen1Casa }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;margin:0 0 20px">Passo 1 · Configure a sua casa modular</h4>
+          <div style="margin-bottom:18px">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Tipologia</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ tipologias }}" as="t" hint-placeholder-count="3">
+                <button type="button" onClick="{{ t.select }}" style="cursor:pointer;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-bottom:18px">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Cor exterior</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ cores }}" as="c" hint-placeholder-count="3">
+                <button type="button" onClick="{{ c.select }}" style="cursor:pointer;border:1.5px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-bottom:18px">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Piso</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ pisos }}" as="p" hint-placeholder-count="2">
+                <button type="button" onClick="{{ p.select }}" style="cursor:pointer;border:1.5px solid {{ p.border }};background:{{ p.bg }};color:{{ p.fg }};border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600">{{ p.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-bottom:18px">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Cozinha</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ cozinhas }}" as="k" hint-placeholder-count="2">
+                <button type="button" onClick="{{ k.select }}" style="cursor:pointer;border:1.5px solid {{ k.border }};background:{{ k.bg }};color:{{ k.fg }};border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600">{{ k.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-bottom:24px">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Transporte</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+              <sc-for list="{{ paises }}" as="pa" hint-placeholder-count="2">
+                <button type="button" onClick="{{ pa.select }}" style="cursor:pointer;border:1.5px solid {{ pa.border }};background:{{ pa.bg }};color:{{ pa.fg }};border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600">{{ pa.label }}</button>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ prazos }}" as="pr" hint-placeholder-count="2">
+                <button type="button" onClick="{{ pr.select }}" style="cursor:pointer;border:1.5px solid {{ pr.border }};background:{{ pr.bg }};color:{{ pr.fg }};border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600">{{ pr.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <button type="button" onClick="{{ goBack0 }}" style="cursor:pointer;background:none;border:0;color:#6b7280;font-size:14px;font-weight:600">Voltar</button>
+            <button type="button" onClick="{{ toEstimateCasa }}" style="cursor:pointer;background:#FF6A00;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:700" style-hover="background:#e85d00">Ver estimativa</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen1Fork }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;margin:0 0 20px">Passo 1 · Configure a sua encomenda</h4>
+          <div style="background:#fff;border-radius:14px;padding:18px;margin-bottom:20px">
+            <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">Modelo de exemplo</div>
+            <div style="font-weight:700;font-size:16px">CPD30 · 3 toneladas</div>
+          </div>
+          <div style="margin-bottom:28px">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">Quantidade</div>
+            <div style="display:flex;align-items:center;gap:16px">
+              <button type="button" onClick="{{ forkMinus }}" style="width:38px;height:38px;border-radius:50%;border:1.5px solid #eee;background:#fff;font-size:18px;font-weight:700;cursor:pointer">–</button>
+              <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:22px;min-width:28px;text-align:center">{{ forkQty }}</span>
+              <button type="button" onClick="{{ forkPlus }}" style="width:38px;height:38px;border-radius:50%;border:1.5px solid #eee;background:#fff;font-size:18px;font-weight:700;cursor:pointer">+</button>
+              <span style="font-size:13px;color:#6b7280">unidade(s)</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <button type="button" onClick="{{ goBack0 }}" style="cursor:pointer;background:none;border:0;color:#6b7280;font-size:14px;font-weight:600">Voltar</button>
+            <button type="button" onClick="{{ toEstimateFork }}" style="cursor:pointer;background:#FF6A00;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:700" style-hover="background:#e85d00">Ver estimativa</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen2Casa }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center">
+          <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">A sua estimativa</div>
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:44px;color:#FF6A00;letter-spacing:-0.02em">≈ {{ casaEstimate }} €</div>
+          <p style="font-size:12.5px;color:#9a9aa3;margin:8px 0 24px">Valor exemplificativo — a proposta real é confirmada na fase de apoio personalizado.</p>
+          <div style="background:#fff;border-radius:14px;padding:18px;text-align:left;font-size:13.5px;line-height:2;color:#4b4d54;margin-bottom:24px">
+            <div style="display:flex;justify-content:space-between"><span>Modelo {{ casaTipologia }}</span><span>{{ casaBaseFmt }} €</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Acabamentos</span><span>+{{ casaAcabFmt }} €</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Transporte</span><span>+{{ casaTransFmt }} €</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <button type="button" onClick="{{ backToConfigCasa }}" style="cursor:pointer;background:none;border:0;color:#6b7280;font-size:14px;font-weight:600">Ajustar</button>
+            <button type="button" onClick="{{ toStep2 }}" style="cursor:pointer;background:#FF6A00;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:700" style-hover="background:#e85d00">Falar com um especialista</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen2Fork }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center">
+          <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">A sua estimativa</div>
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:26px;color:#FF6A00;letter-spacing:-0.01em">{{ forkQty }} × CPD30 · orçamento personalizado</div>
+          <p style="font-size:12.5px;color:#9a9aa3;margin:8px 0 24px">Preço de fábrica confirmado na fase de apoio personalizado, consoante tonelagem e bateria escolhidas.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <button type="button" onClick="{{ goBack0 }}" style="cursor:pointer;background:none;border:0;color:#6b7280;font-size:14px;font-weight:600">Ajustar</button>
+            <button type="button" onClick="{{ toStep2 }}" style="cursor:pointer;background:#FF6A00;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:700" style-hover="background:#e85d00">Falar com um especialista</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen3 }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;margin:0 0 20px">Passo 2 · Apoio Personalizado</h4>
+          <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
+            <span style="width:34px;height:34px;border-radius:50%;background:#16171a;color:#FF6A00;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0">ML</span>
+            <div style="background:#fff;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;max-width:80%">Recebemos a sua simulação. Podemos falar por videochamada esta semana para validar os detalhes do terreno e do transporte?</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;justify-content:flex-end;margin-bottom:20px">
+            <div style="background:#FF6A00;color:#fff;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;max-width:80%">Sim, quinta-feira à tarde fica bem.</div>
+          </div>
+          <p style="font-size:13.5px;color:#6b7280;margin:0 0 24px">Suporte por telefone e WhatsApp, com relatórios visuais e validação digital em cada etapa.</p>
+          <div style="display:flex;justify-content:flex-end">
+            <button type="button" onClick="{{ toStep3 }}" style="cursor:pointer;background:#FF6A00;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:700" style-hover="background:#e85d00">Seguinte</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen4 }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;margin:0 0 20px">Passo 3 · Proposta Final &amp; Ajustes</h4>
+          <div style="background:#fff;border-radius:14px;padding:22px;margin-bottom:24px">
+            <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px">Resumo da proposta</div>
+            <div style="display:grid;gap:10px;font-size:14px;color:#16171a">
+              <div style="display:flex;justify-content:space-between"><span>Produto</span><span style="font-weight:600">{{ propostaProduto }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Valor final</span><span style="font-weight:600;color:#FF6A00">{{ propostaValor }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Certificações</span><span style="font-weight:600">Conformidade europeia</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Prazo estimado</span><span style="font-weight:600">{{ propostaPrazo }}</span></div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-end">
+            <button type="button" onClick="{{ toStep4 }}" style="cursor:pointer;background:#FF6A00;color:#fff;border:0;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:700" style-hover="background:#e85d00">Aprovar proposta</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScreen5 }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center">
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;margin:0 0 14px">Passo 4 · Ato de Pagamento Segurado</h4>
+          <p style="font-size:13.5px;color:#6b7280;max-width:44ch;margin:0 auto 22px">A fatura ou a submissão de crédito só é gerada agora que a proposta está aprovada por si.</p>
+          <div style="display:flex;justify-content:center;margin-bottom:16px">
+            <span style="font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;background:#fff;border:1px solid #eee">Stripe</span>
+          </div>
+          <p style="font-size:13px;color:#6b7280;max-width:46ch;margin:0 auto 24px">Todas as faturas e cobranças são processadas exclusivamente através da Stripe, garantindo pagamentos encriptados, conformes com os padrões internacionais de segurança financeira e com total rastreabilidade para ambas as partes.</p>
+          <div style="background:#16171a;color:#fff;border-radius:14px;padding:20px;margin-bottom:24px">
+            <div style="font-weight:700;font-size:15px;color:#FF6A00;margin-bottom:6px">Pagamento libertado após aprovação</div>
+            <div style="font-size:13px;color:#c7c7ce">Sem surpresas: sempre com acompanhamento dedicado antes de qualquer cobrança.</div>
+          </div>
+          <button type="button" onClick="{{ restart }}" style="cursor:pointer;background:none;border:1.5px solid #eee;border-radius:999px;padding:11px 22px;font-size:13.5px;font-weight:600;color:#6b7280" style-hover="border-color:#FF6A00;color:#FF6A00">Reiniciar demo</button>
+        </div>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;padding:32px 0;border-top:1px solid #eee;border-bottom:1px solid #eee">
+    <div style="text-align:center">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;color:#FF6A00">10</div>
+      <div style="font-size:13px;color:#6b7280;margin-top:2px">Modelos de empilhador</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;color:#FF6A00">11</div>
+      <div style="font-size:13px;color:#6b7280;margin-top:2px">Modelos de casa modular</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;color:#FF6A00">1–10 t</div>
+      <div style="font-size:13px;color:#6b7280;margin-top:2px">Capacidade de carga</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;color:#FF6A00">12–96 m²</div>
+      <div style="font-size:13px;color:#6b7280;margin-top:2px">Área habitável</div>
+    </div>
+  </section>
+
+  <section style="padding:52px 0 20px">
+    <h6 style="color:#FF6A00;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;text-align:center">Operamos com as maiores transportadoras do mundo</h6>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/msc.svg" alt="MSC" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/maersk.png" alt="APM–Maersk" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/cma-cgm.svg" alt="CMA CGM" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/cosco.png" alt="COSCO" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/hapag-lloyd.png" alt="Hapag-Lloyd" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/one.png" alt="ONE" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+      <span style="display:flex;align-items:center;height:52px;padding:10px 22px;border-radius:14px;background:#fafafa;border:1px solid #eee"><img src="assets/logos/evergreen.svg" alt="Evergreen Line" style="height:100%;width:auto;max-width:150px;object-fit:contain"></span>
+    </div>
+    <p style="text-align:center;font-size:14px;color:#6b7280;max-width:56ch;margin:18px auto 0">Comparamos rotas e prazos entre as maiores transportadoras do mundo para garantir o melhor custo e tempo de trânsito em cada encomenda.</p>
+  </section>
+
+  <section style="padding:76px 0 20px">
+    <h6 style="color:#FF6A00;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px">Porquê a MedLink Trade</h6>
+    <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.02em;margin:0 0 44px;max-width:26ch">O que muda ao comprar diretamente connosco</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px">
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">01</div>
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 8px">Preço de fábrica</h3>
+        <p style="font-size:14px;line-height:1.55;color:#6b7280;margin:0">Sem intermediários: encomenda diretamente da linha de produção, com tonelagem, cor e acabamento a pedido.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">02</div>
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 8px">Duas linhas, um só fornecedor</h3>
+        <p style="font-size:14px;line-height:1.55;color:#6b7280;margin:0">Empilhadores elétricos e casas modulares no mesmo catálogo, com o mesmo contacto para orçamento e assistência.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">03</div>
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 8px">Suporte direto</h3>
+        <p style="font-size:14px;line-height:1.55;color:#6b7280;margin:0">Uma linha telefónica para pedidos e assistência — sem central de atendimento a atravessar.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">04</div>
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 8px">Feito por encomenda</h3>
+        <p style="font-size:14px;line-height:1.55;color:#6b7280;margin:0">Capacidade, área, cor e equipamento ajustados ao projeto, em ambas as linhas de produto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" style="padding:76px 0 20px">
+    <h6 style="color:#FF6A00;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px">Os nossos serviços</h6>
+    <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.02em;margin:0 0 28px;max-width:26ch">Importamos por si em duas áreas</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;font-family:'Manrope',sans-serif;font-weight:700;font-size:clamp(18px,2.4vw,24px)">
+      <a href="casas-modulares.html" style="text-decoration:none;color:#16171a;border-bottom:2px solid #FF6A00;padding-bottom:3px" style-hover="color:#FF6A00">Casas Modulares</a>
+      <span style="color:#c7c7ce;font-weight:500">|</span>
+      <a href="empilhadores.html" style="text-decoration:none;color:#16171a;border-bottom:2px solid #FF6A00;padding-bottom:3px" style-hover="color:#FF6A00">Empilhadores</a>
+    </div>
+    <p style="font-size:15px;line-height:1.6;color:#4b4d54;max-width:58ch;margin:22px 0 0">Em qualquer das áreas fazemos o mesmo: seleção de fábrica, controlo de qualidade, transporte, alfândega e faturação — do primeiro contacto à entrega.</p>
+  </section>
+
+  <section style="padding:76px 0 20px;text-align:center">
+    <h6 style="color:#FF6A00;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px">Como trabalhamos</h6>
+    <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;margin:0 auto 18px;max-width:22ch">Importação Internacional com Risco Zero</h2>
+    <p style="font-size:17px;line-height:1.6;max-width:56ch;margin:0 auto;color:#4b4d54">Conectamos o seu negócio aos melhores fabricantes mundiais e gerimos todo o processo de importação por si.</p>
+  </section>
+
+  <section style="padding:24px 0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
+    <div>
+      <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.01em;margin:0 0 12px">A Nossa Função: O Que Fazemos Por Si?</h3>
+      <p style="font-size:15px;line-height:1.65;color:#4b4d54;margin:0">A nossa missão é simplificar o comércio internacional. Atuamos como os seus olhos e os seus braços no estrangeiro, garantindo que o seu investimento está seguro desde o primeiro contacto até à entrega final do produto físico.</p>
+    </div>
+    <img src="assets/p07-0.jpg" alt="" style="width:100%;aspect-ratio:16/11;object-fit:contain;background:#fafafa;border-radius:20px;mix-blend-mode:multiply">
+  </section>
+
+  <section style="padding:64px 0 20px">
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.01em;margin:0 0 32px">Como Funciona o Nosso Serviço?</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px">
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">01</div>
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px">Parcerias com os Melhores Fabricantes</h4>
+        <p style="font-size:14px;line-height:1.6;color:#6b7280;margin:0">Não trabalhamos com intermediários genéricos. Selecionamos, auditamos e negociamos diretamente com fábricas certificadas internacionalmente para garantir o melhor preço e capacidade de produção.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">02</div>
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px">Controlo de Qualidade Visual Detalhado</h4>
+        <p style="font-size:14px;line-height:1.6;color:#6b7280;margin:0">Para sua total segurança, implementamos uma fase rigorosa de validação. Antes de qualquer envio ser despachado, enviamos-lhe fotos e vídeos de alta resolução da produção e dos testes do produto. O cliente aprova a qualidade real de forma digital antes de a mercadoria sair da fábrica.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#FF6A00;margin-bottom:14px">03</div>
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px">Gestão de Logística e Alfândega</h4>
+        <p style="font-size:14px;line-height:1.6;color:#6b7280;margin:0">Coordenamos todo o transporte internacional (marítimo ou aéreo) e tratamos da burocracia documental. Orientamos todo o processo alfandegário para que a sua mercadoria física seja entregue em conformidade com as leis locais.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:64px 0 24px;background:#16171a;color:#fff;border-radius:24px;margin-top:20px;padding-left:40px;padding-right:40px">
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.01em;margin:0 0 32px">As Vantagens de Ter a Nossa Intermediação</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-bottom:20px">
+      <div>
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px;color:#FF6A00">Segurança Absoluta</h4>
+        <p style="font-size:14px;line-height:1.6;color:#c7c7ce;margin:0">O seu dinheiro só é libertado para o fabricante após a validação rigorosa da qualidade.</p>
+      </div>
+      <div>
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px;color:#FF6A00">Transparência Total</h4>
+        <p style="font-size:14px;line-height:1.6;color:#c7c7ce;margin:0">Acompanha cada etapa do processo através de relatórios visuais (fotos e vídeos) em tempo real.</p>
+      </div>
+      <div>
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px;color:#FF6A00">Sem Barreiras</h4>
+        <p style="font-size:14px;line-height:1.6;color:#c7c7ce;margin:0">Eliminamos os problemas de fuso horário, idioma e burocracia aduaneira.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:76px 0 20px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px">
+      <span style="font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;background:#FFF1E6;color:#c94e00">Atendimento via WhatsApp &amp; Telefone</span>
+      <span style="font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;background:#FFF1E6;color:#c94e00">Reuniões e Relatórios por Videochamada</span>
+      <span style="font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;background:#FFF1E6;color:#c94e00">Processo 100% Digital e Seguro</span>
+    </div>
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.01em;margin:0 0 14px">Um Serviço 100% Online e Próximo de Si</h3>
+    <p style="font-size:15px;line-height:1.65;color:#4b4d54;max-width:70ch;margin:0 0 32px">Não precisa de sair da sua empresa ou de casa para acompanhar a sua importação. Embora o produto final seja físico, o nosso atendimento e consultoria são totalmente digitais. Garantimos máxima proximidade através de:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-bottom:32px">
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px">Videochamadas de Alinhamento</h4>
+        <p style="font-size:14px;line-height:1.6;color:#6b7280;margin:0">Reunimos por videoconferência (Zoom, Google Meet ou WhatsApp) para entender os seus objetivos, apresentar os orçamentos e validar os relatórios dos fabricantes em conjunto.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px">Suporte por Telefone e WhatsApp</h4>
+        <p style="font-size:14px;line-height:1.6;color:#6b7280;margin:0">Tem uma linha direta connosco para tirar dúvidas e receber atualizações em tempo real sobre o estado da sua produção e transporte.</p>
+      </div>
+      <div style="padding:28px;border-radius:16px;background:#fafafa;transition:transform 0.2s,box-shadow 0.2s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.08)">
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 8px">Aprovações Digitais</h4>
+        <p style="font-size:14px;line-height:1.6;color:#6b7280;margin:0">Enviamos todas as fotos, vídeos de testes de qualidade e documentos diretamente para o seu telemóvel ou e-mail. Analisa tudo no seu próprio ecrã e aprova com um clique.</p>
+      </div>
+    </div>
+    <p style="font-size:15px;font-weight:600;color:#16171a;margin:0">A sua única preocupação é atender o telefone e aprovar os materiais. Nós tratamos do resto.</p>
+  </section>
+
+  <footer style="margin-top:24px;border-radius:24px;background:#16171a;color:#fff;padding:52px 40px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+    <div>
+      <h6 style="color:#FF6A00;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px">Pedidos ou assistência</h6>
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,46px);letter-spacing:-0.02em">+351 965 349 393</div>
+      <p style="margin:10px 0 0;font-size:14px;color:#9a9aa3">MedLink Trade</p>
+      <p style="margin:14px 0 0;font-size:13px;color:#6b7280">Catálogo: <a href="empilhadores.html" style="color:#9a9aa3;text-decoration:underline">Empilhadores</a> · <a href="casas-modulares.html" style="color:#9a9aa3;text-decoration:underline">Casas modulares</a></p>
+    </div>
+    <a href="tel:+351965349393" style="text-decoration:none;background:#FF6A00;color:#16171a;padding:15px 28px;border-radius:999px;font-weight:700;font-size:15px" style-hover="background:#ffb066">Ligar agora</a>
+  </footer>
+
+  <div style="height:40px"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CASA_BASE = { S3: 18950, M7: 40950, "20FT": 16950 };
+const COR_ADJ = { "Branco": 0, "Cinza": 250, "Preto": 400 };
+const PISO_ADJ = { "Vinílico": 0, "Madeira": 900 };
+const COZ_ADJ = { "Compacta": 0, "Equipada": 1200 };
+const PAIS_ADJ = { "Portugal continental": 0, "Açores / Madeira": 1500 };
+const PRAZO_ADJ = { "Standard (60–75 dias)": 0, "Expresso (30–45 dias)": 1800 };
+const fmt = n => n.toLocaleString("pt-PT");
+
+class Component extends DCLogic {
+  state = {
+    screen: 0, category: null,
+    casaTipologia: "20FT", casaCor: "Branco", casaPiso: "Vinílico", casaCozinha: "Compacta",
+    casaPais: "Portugal continental", casaPrazo: "Standard (60–75 dias)",
+    forkQty: 1
+  };
+
+  pill(value, current, onSelect) {
+    const selected = value === current;
+    return {
+      label: value, select: () => onSelect(value),
+      border: selected ? "#FF6A00" : "#eee",
+      bg: selected ? "#FF6A00" : "#fff",
+      fg: selected ? "#fff" : "#16171a"
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const set = (k) => (v) => this.setState({ [k]: v });
+
+    const casaBase = CASA_BASE[s.casaTipologia];
+    const casaAcab = COR_ADJ[s.casaCor] + PISO_ADJ[s.casaPiso] + COZ_ADJ[s.casaCozinha];
+    const casaTrans = PAIS_ADJ[s.casaPais] + PRAZO_ADJ[s.casaPrazo];
+    const casaTotal = casaBase + casaAcab + casaTrans;
+
+    const stageOf = { 0: 0, 1: 0, 2: 0, 3: 1, 4: 2, 5: 3 }[s.screen] ?? 0;
+    const stageLabels = ["Simulação", "Apoio", "Proposta", "Pagamento"];
+    const stages = stageLabels.map((label, i) => ({
+      label,
+      dot: i <= stageOf ? "#FF6A00" : "#eee",
+      color: i <= stageOf ? "#16171a" : "#c7c7ce"
+    }));
+
+    return {
+      stages,
+      isScreen0: s.screen === 0,
+      isScreen1Casa: s.screen === 1 && s.category === "casa",
+      isScreen1Fork: s.screen === 1 && s.category === "fork",
+      isScreen2Casa: s.screen === 2 && s.category === "casa",
+      isScreen2Fork: s.screen === 2 && s.category === "fork",
+      isScreen3: s.screen === 3,
+      isScreen4: s.screen === 4,
+      isScreen5: s.screen === 5,
+
+      pickCasas: () => this.setState({ category: "casa", screen: 1 }),
+      pickFork: () => this.setState({ category: "fork", screen: 1 }),
+      goBack0: () => this.setState({ screen: 0 }),
+      backToConfigCasa: () => this.setState({ screen: 1 }),
+
+      tipologias: ["S3", "M7", "20FT"].map(v => this.pill(v, s.casaTipologia, set("casaTipologia"))),
+      cores: ["Branco", "Cinza", "Preto"].map(v => this.pill(v, s.casaCor, set("casaCor"))),
+      pisos: ["Vinílico", "Madeira"].map(v => this.pill(v, s.casaPiso, set("casaPiso"))),
+      cozinhas: ["Compacta", "Equipada"].map(v => this.pill(v, s.casaCozinha, set("casaCozinha"))),
+      paises: ["Portugal continental", "Açores / Madeira"].map(v => this.pill(v, s.casaPais, set("casaPais"))),
+      prazos: ["Standard (60–75 dias)", "Expresso (30–45 dias)"].map(v => this.pill(v, s.casaPrazo, set("casaPrazo"))),
+
+      toEstimateCasa: () => this.setState({ screen: 2 }),
+      casaEstimate: fmt(casaTotal),
+      casaBaseFmt: fmt(casaBase),
+      casaAcabFmt: fmt(casaAcab),
+      casaTransFmt: fmt(casaTrans),
+      casaTipologia: s.casaTipologia,
+
+      forkQty: s.forkQty,
+      forkMinus: () => this.setState({ forkQty: Math.max(1, s.forkQty - 1) }),
+      forkPlus: () => this.setState({ forkQty: s.forkQty + 1 }),
+      toEstimateFork: () => this.setState({ screen: 2 }),
+
+      toStep2: () => this.setState({ screen: 3 }),
+      toStep3: () => this.setState({ screen: 4 }),
+      toStep4: () => this.setState({ screen: 5 }),
+      restart: () => this.setState({ screen: 0, category: null }),
+
+      propostaProduto: s.category === "casa" ? ("Casa modular " + s.casaTipologia) : (s.forkQty + " × Empilhador CPD30"),
+      propostaValor: s.category === "casa" ? ("≈ " + fmt(casaTotal) + " €") : "Sob consulta",
+      propostaPrazo: s.category === "casa" ? s.casaPrazo : "A confirmar com o fabricante"
+    };
+  }
+}
+</script>
+</body>
+</html>
