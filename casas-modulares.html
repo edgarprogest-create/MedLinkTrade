@@ -10,8 +10,8 @@
 
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   body { margin:0; background:#ffffff; -webkit-font-smoothing:antialiased; font-family:'Work Sans',system-ui,sans-serif; color:#0a0a0a; }
   a { color:inherit; }
@@ -33,7 +33,7 @@
 </style>
 </helmet>
 
-<div class="wrap" style="max-width:1280px;margin:0 auto;padding:0 28px;overflow:hidden">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 28px; overflow: hidden; position: relative">
 
   <header style="display:flex;align-items:center;justify-content:space-between;padding:26px 0">
     <img src="terracore-wordmark-black.png" alt="TerraCore Engineering" style="height:24px;width:auto">
@@ -59,10 +59,6 @@
       <a href="#colecao" style="text-decoration:none;background:#0a0a0a;color:#fff;padding:15px 28px;font-weight:600;font-size:15px" style-hover="opacity:0.75">{{ t.cta_models }}</a>
       <a href="#showroom" style="text-decoration:none;background:none;color:#0a0a0a;padding:15px 28px;font-weight:600;font-size:15px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">{{ t.cta_showroom }}</a>
     </div>
-  </section>
-
-  <section style="margin:0 0 4px">
-    <img src="a2.jpg" alt="TerraCore — módulo A2" style="width:100%;max-height:520px;object-fit:cover;display:block">
   </section>
 
   <section class="statGrid" style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
@@ -111,6 +107,47 @@
         <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">{{ t.why4_title }}</h3>
         <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">{{ t.why4_body }}</p>
       </div>
+    </div>
+  </section>
+
+  <section style="padding:70px 0 20px">
+    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px">{{ t.mirror_kicker }}</h6>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:0;border:1px solid #0a0a0a">
+      <img src="exterior-pool.jpg" alt="TerraCore Mirror — exterior" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3">
+      <div style="padding:36px;display:flex;flex-direction:column;justify-content:center">
+        <h2 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,38px);text-transform:uppercase;margin:0 0 14px">{{ t.mirror_title }}</h2>
+        <p style="font-size:14.5px;line-height:1.6;color:#0a0a0a;font-weight:600;margin:0 0 12px">{{ t.mirror_tagline }}</p>
+        <div style="display:flex;gap:28px;margin:0 0 16px">
+          <div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b6b68">20FT</div>
+            <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:24px">26.950 €</div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b6b68">40FT</div>
+            <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:24px">52.950 €</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:#6b6b68;margin:0 0 4px">{{ t.mirror_delivery }}</p>
+        <p style="font-size:12.5px;color:#6b6b68;margin:0 0 16px">{{ t.mirror_credit }}</p>
+        <p style="font-size:13.5px;line-height:1.6;color:#6b6b68;margin:0 0 22px">{{ t.mirror_body }}</p>
+        <div style="display:grid;gap:7px;margin:0 0 22px;font-size:12.5px;line-height:1.55;color:#4a4a48">
+          <div><strong style="color:#0a0a0a">{{ t.mirror_spec_size_label }}</strong> {{ t.mirror_spec_size_value }}</div>
+          <div><strong style="color:#0a0a0a">{{ t.mirror_spec_structure_label }}</strong> {{ t.mirror_spec_structure_value }}</div>
+          <div><strong style="color:#0a0a0a">{{ t.mirror_spec_equip_label }}</strong> {{ t.mirror_spec_equip_value }}</div>
+          <div><strong style="color:#0a0a0a">{{ t.mirror_spec_insulation_label }}</strong> {{ t.mirror_spec_insulation_value }}</div>
+          <div><strong style="color:#0a0a0a">{{ t.mirror_spec_color_label }}</strong> {{ t.mirror_spec_color_value }}</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a href="tel:+351937773935" style="text-decoration:none;background:#0a0a0a;color:#fff;padding:12px 22px;font-weight:600;font-size:13.5px" style-hover="opacity:0.75">{{ t.mirror_cta }}</a>
+          <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#0a0a0a;padding:12px 22px;font-weight:600;font-size:13.5px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px">
+      <img src="exterior-day.jpg" alt="TerraCore Mirror — dois volumes" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+      <img src="interior.jpg" alt="TerraCore Mirror — interior" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+      <img src="bathroom.jpg" alt="TerraCore Mirror — casa de banho" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
+      <img src="exterior-night.jpg" alt="TerraCore Mirror — noite" style="width:100%;aspect-ratio:1;object-fit:cover;display:block">
     </div>
   </section>
 
@@ -336,6 +373,17 @@ const T = {
     dual_cta: "Conhecer a MedLink Trade",
     footer_kicker: "Pedidos ou assistência", footer_cta: "Ligar agora",
     buy_cta_open: "Enviar pedido de orçamento", buy_step0_title: "Pedido enviado para a fábrica", buy_step0_pre: "Um agente nosso vai entrar em contacto consigo sobre o modelo ", buy_step0_post: ". Depois de esclarecidas as suas dúvidas e avançarmos com o pedido, avaliamos consigo a melhor transportadora.", buy_step0_cta: "Continuar →", buy_step1_title: "MedLink: a avaliar consigo a melhor transportadora", buy_ddp_pre: "Damos prioridade a transportadoras com ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — Entrega com Direitos Pagos — que inclui frete total desde a origem até ao seu endereço, desalfandegamento de exportação e importação, e os impostos e direitos de entrada.", buy_responsibility: "Da sua parte: descarregar a mercadoria no local de destino (salvo acordo em contrário) e confirmar a receção.", carrier_cheapest: "Mais económica", carrier_select: "Selecionar", buy_step2_title: "Transporte confirmado — DDP", buy_row_carrier: "Transportadora", buy_row_cost: "Custo de transporte", buy_row_delivery: "Prazo de entrega", buy_delivery_value: "35 a 45 dias", buy_step2_cta: "Gerar fatura segura →", buy_step3_title: "Fatura segura gerada", buy_step3_body: "A fatura inclui o produto e o transporte. Assim que for liquidada, iniciamos o pedido de entrega na sua casa, com acompanhamento contínuo antes e depois da entrega.", buy_row_model: "Modelo", buy_step3_cta: "Concluir", buy_agent_whatsapp: "Falar com agente · WhatsApp", buy_agent_call: "Ligar · 937 773 935", buy_close_aria: "Fechar", office_line: "Escritórios em Lisboa e Porto",
+    mirror_kicker: "Destaque", mirror_title: "TerraCore Mirror",
+    mirror_tagline: "Fachada espelhada que devolve a paisagem — a nossa configuração mais exclusiva.",
+    mirror_body: "Painéis de vidro espelhado envolvem a estrutura, dissolvendo o volume na paisagem em redor. Por dentro, acabamento minimal em tons claros, cozinha equipada e casa de banho suite.",
+    mirror_cta: "Pedir informação",
+    mirror_spec_size_label: "Dimensões:", mirror_spec_size_value: "20FT — 6,06 × 2,44 × 2,59 m · 40FT — 12,19 × 2,44 × 2,90 m (outras medidas por encomenda)",
+    mirror_spec_structure_label: "Estrutura:", mirror_spec_structure_value: "Aço tipo contentor, painéis sandwich isolados e revestimento decorativo",
+    mirror_spec_equip_label: "Equipamento:", mirror_spec_equip_value: "Casa de banho completa, cozinha, quartos, sala, mobiliário, roupeiro, termoacumulador, ar condicionado, aquecimento, varanda, porta e janela em vidro e sistema solar — configurável",
+    mirror_spec_insulation_label: "Isolamento:", mirror_spec_insulation_value: "Poliuretano, EPS, IEPS, lã de rocha ou lã de vidro",
+    mirror_spec_color_label: "Cor:", mirror_spec_color_value: "Branco, verde ou personalizada",
+    mirror_delivery: "Entrega em 45 a 60 dias",
+    mirror_credit: "Consulte-nos sobre a possibilidade de financiamento a crédito.",
     familia_capsula: "Cápsula", familia_duplex: "Duplex", familia_modulo: "Módulo", familia_cabana: "Cabana", familia_contentor: "Contentor dobrável", familia_domo: "Domo"
   },
   en: {
@@ -363,6 +411,17 @@ const T = {
     dual_cta: "Meet MedLink Trade",
     footer_kicker: "Orders or support", footer_cta: "Call now",
     buy_cta_open: "Submit quote request", buy_step0_title: "Order sent to the factory", buy_step0_pre: "One of our agents will contact you about model ", buy_step0_post: ". Once your questions are answered and we move forward with the order, we'll assess the best carrier together.", buy_step0_cta: "Continue →", buy_step1_title: "MedLink: assessing the best carrier with you", buy_ddp_pre: "We prioritise carriers with ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — full freight from origin to your address, export and import customs clearance, and entry taxes and duties.", buy_responsibility: "On your side: unloading the goods at destination (unless otherwise agreed) and confirming receipt.", carrier_cheapest: "Most affordable", carrier_select: "Select", buy_step2_title: "Shipping confirmed — DDP", buy_row_carrier: "Carrier", buy_row_cost: "Shipping cost", buy_row_delivery: "Delivery time", buy_delivery_value: "35 to 45 days", buy_step2_cta: "Generate secure invoice →", buy_step3_title: "Secure invoice generated", buy_step3_body: "The invoice covers the product and shipping. Once it's settled, we start delivery to your address, with continuous support before and after delivery.", buy_row_model: "Model", buy_step3_cta: "Done", buy_agent_whatsapp: "Talk to an agent · WhatsApp", buy_agent_call: "Call · 937 773 935", buy_close_aria: "Close", office_line: "Offices in Lisbon and Porto",
+    mirror_kicker: "Featured", mirror_title: "TerraCore Mirror",
+    mirror_tagline: "A mirrored façade that reflects the landscape back — our most exclusive configuration.",
+    mirror_body: "Mirrored glass panels wrap the structure, dissolving its volume into the surrounding landscape. Inside, a minimal finish in light tones, an equipped kitchen and an en-suite bathroom.",
+    mirror_cta: "Request information",
+    mirror_spec_size_label: "Dimensions:", mirror_spec_size_value: "20FT — 6.06 × 2.44 × 2.59 m · 40FT — 12.19 × 2.44 × 2.90 m (other sizes on request)",
+    mirror_spec_structure_label: "Structure:", mirror_spec_structure_value: "Container-type steel frame, insulated sandwich panels and decorative cladding",
+    mirror_spec_equip_label: "Equipment:", mirror_spec_equip_value: "Full bathroom, kitchen, bedrooms, living room, furniture, wardrobe, water heater, air conditioning, heating, balcony, glass door and window, solar system — configurable",
+    mirror_spec_insulation_label: "Insulation:", mirror_spec_insulation_value: "Polyurethane, EPS, IEPS, rock wool or glass wool",
+    mirror_spec_color_label: "Colour:", mirror_spec_color_value: "White, green or custom",
+    mirror_delivery: "Delivery in 45 to 60 days",
+    mirror_credit: "Ask us about financing options.",
     familia_capsula: "Capsule", familia_duplex: "Duplex", familia_modulo: "Module", familia_cabana: "Cabin", familia_contentor: "Foldable container", familia_domo: "Dome"
   },
   es: {
@@ -390,6 +449,17 @@ const T = {
     dual_cta: "Conocer MedLink Trade",
     footer_kicker: "Pedidos o asistencia", footer_cta: "Llamar ahora",
     buy_cta_open: "Enviar solicitud de presupuesto", buy_step0_title: "Pedido enviado a la fábrica", buy_step0_pre: "Uno de nuestros agentes se pondrá en contacto con usted sobre el modelo ", buy_step0_post: ". Una vez aclaradas sus dudas y avancemos con el pedido, evaluamos juntos la mejor transportadora.", buy_step0_cta: "Continuar →", buy_step1_title: "MedLink: evaluando con usted la mejor transportadora", buy_ddp_pre: "Damos prioridad a transportistas con ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — Entrega con Derechos Pagados — que incluye flete total desde el origen hasta su dirección, despacho aduanero de exportación e importación, y los impuestos y derechos de entrada.", buy_responsibility: "De su parte: descargar la mercancía en el lugar de destino (salvo acuerdo en contrario) y confirmar la recepción.", carrier_cheapest: "Más económica", carrier_select: "Seleccionar", buy_step2_title: "Transporte confirmado — DDP", buy_row_carrier: "Transportadora", buy_row_cost: "Costo de transporte", buy_row_delivery: "Plazo de entrega", buy_delivery_value: "35 a 45 días", buy_step2_cta: "Generar factura segura →", buy_step3_title: "Factura segura generada", buy_step3_body: "La factura incluye el producto y el transporte. Una vez liquidada, iniciamos el pedido de entrega en su casa, con acompañamiento continuo antes y después de la entrega.", buy_row_model: "Modelo", buy_step3_cta: "Finalizar", buy_agent_whatsapp: "Hablar con un agente · WhatsApp", buy_agent_call: "Llamar · 937 773 935", buy_close_aria: "Cerrar", office_line: "Oficinas en Lisboa y Oporto",
+    mirror_kicker: "Destacado", mirror_title: "TerraCore Mirror",
+    mirror_tagline: "Fachada espejada que devuelve el paisaje — nuestra configuración más exclusiva.",
+    mirror_body: "Paneles de vidrio espejado envuelven la estructura, disolviendo el volumen en el paisaje circundante. Por dentro, acabado minimalista en tonos claros, cocina equipada y baño en suite.",
+    mirror_cta: "Solicitar información",
+    mirror_spec_size_label: "Dimensiones:", mirror_spec_size_value: "20FT — 6,06 × 2,44 × 2,59 m · 40FT — 12,19 × 2,44 × 2,90 m (otras medidas por encargo)",
+    mirror_spec_structure_label: "Estructura:", mirror_spec_structure_value: "Acero tipo contenedor, paneles sándwich aislados y revestimiento decorativo",
+    mirror_spec_equip_label: "Equipamiento:", mirror_spec_equip_value: "Baño completo, cocina, dormitorios, salón, mobiliario, armario, termo, aire acondicionado, calefacción, balcón, puerta y ventana de vidrio, sistema solar — configurable",
+    mirror_spec_insulation_label: "Aislamiento:", mirror_spec_insulation_value: "Poliuretano, EPS, IEPS, lana de roca o lana de vidrio",
+    mirror_spec_color_label: "Color:", mirror_spec_color_value: "Blanco, verde o personalizado",
+    mirror_delivery: "Entrega en 45 a 60 días",
+    mirror_credit: "Consúltenos sobre la posibilidad de financiación a crédito.",
     familia_capsula: "Cápsula", familia_duplex: "Dúplex", familia_modulo: "Módulo", familia_cabana: "Cabaña", familia_contentor: "Contenedor plegable", familia_domo: "Domo"
   }
 };
