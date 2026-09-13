@@ -21,7 +21,7 @@
   @media (max-width:640px){
     .wrap{padding-left:16px!important;padding-right:16px!important;}
     header{flex-wrap:wrap;gap:12px;}
-    header nav{gap:14px!important;font-size:13px!important;flex-wrap:wrap;}
+    header nav{gap:12px!important;font-size:13px!important;flex-wrap:wrap;}
     .statGrid{grid-template-columns:repeat(2,1fr)!important;}
     .faqGrid{grid-template-columns:1fr!important;}
     nav[aria-label]{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
@@ -37,9 +37,14 @@
 
   <header style="display:flex;align-items:center;justify-content:space-between;padding:26px 0">
     <img src="terracore-wordmark-black.png" alt="TerraCore Engineering" style="height:24px;width:auto">
-    <nav style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500">
+    <nav style="display:flex;align-items:center;gap:22px;font-size:14px;font-weight:500">
       <a href="index.html" style="text-decoration:none">MedLink Trade</a>
-      <a href="#colecao" style="text-decoration:none">Modelos</a>
+      <a href="#colecao" style="text-decoration:none">{{ t.nav_models }}</a>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800">
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <button type="button" onClick="{{ l.select }}" style="appearance:none;background:none;border:0;cursor:pointer;padding:4px 4px;color:{{ l.color }}">{{ l.code }}</button>
+        </sc-for>
+      </div>
       <a href="tel:+351937773935" style="text-decoration:none;background:#0a0a0a;color:#fff;padding:10px 18px;font-weight:600" style-hover="opacity:0.75">937 773 935</a>
     </nav>
   </header>
@@ -48,11 +53,11 @@
     <span class="fade1" style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6b6b68;margin-bottom:24px">
       <span style="width:20px;height:1px;background:#0a0a0a"></span>Engineering — Modular Buildings
     </span>
-    <h1 class="fade2" style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(44px,7.4vw,84px);line-height:0.98;letter-spacing:-0.01em;margin:0 0 26px;text-transform:uppercase;text-wrap:balance;max-width:16ch">Estruturas modulares, à especificação do seu terreno</h1>
-    <p class="fade3" style="font-size:17px;line-height:1.65;max-width:50ch;margin:0 0 32px;color:#4a4a48">Dezanove configurações, de cápsulas compactas a duplex de dois pisos. Encomendadas de fábrica, inspecionadas na origem, entregues prontas a instalar.</p>
+    <h1 class="fade2" style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(44px,7.4vw,84px);line-height:0.98;letter-spacing:-0.01em;margin:0 0 26px;text-transform:uppercase;text-wrap:balance;max-width:16ch">{{ t.hero_title }}</h1>
+    <p class="fade3" style="font-size:17px;line-height:1.65;max-width:50ch;margin:0 0 32px;color:#4a4a48">{{ t.hero_sub }}</p>
     <div class="fade4" style="display:flex;flex-wrap:wrap;gap:14px">
-      <a href="#colecao" style="text-decoration:none;background:#0a0a0a;color:#fff;padding:15px 28px;font-weight:600;font-size:15px" style-hover="opacity:0.75">Ver as 19 configurações</a>
-      <a href="#showroom" style="text-decoration:none;background:none;color:#0a0a0a;padding:15px 28px;font-weight:600;font-size:15px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">Porque não há showroom</a>
+      <a href="#colecao" style="text-decoration:none;background:#0a0a0a;color:#fff;padding:15px 28px;font-weight:600;font-size:15px" style-hover="opacity:0.75">{{ t.cta_models }}</a>
+      <a href="#showroom" style="text-decoration:none;background:none;color:#0a0a0a;padding:15px 28px;font-weight:600;font-size:15px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">{{ t.cta_showroom }}</a>
     </div>
   </section>
 
@@ -63,56 +68,56 @@
   <section class="statGrid" style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
     <div style="text-align:center;padding:28px 8px;border-right:1px solid #d8d8d5">
       <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:36px">19</div>
-      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">Configurações</div>
+      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">{{ t.stat_configs }}</div>
     </div>
     <div style="text-align:center;padding:28px 8px;border-right:1px solid #d8d8d5">
       <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:36px">12–96 m²</div>
-      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">Área habitável</div>
+      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">{{ t.stat_area }}</div>
     </div>
     <div style="text-align:center;padding:28px 8px;border-right:1px solid #d8d8d5">
-      <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:36px">Quatro</div>
-      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">Famílias construtivas</div>
+      <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:36px">{{ t.stat_families_value }}</div>
+      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">{{ t.stat_families }}</div>
     </div>
     <div style="text-align:center;padding:28px 8px;border-right:1px solid #d8d8d5">
       <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:36px">2–8</div>
-      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">Hóspedes</div>
+      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">{{ t.stat_guests }}</div>
     </div>
     <div style="text-align:center;padding:28px 8px">
       <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:36px">9</div>
-      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">Países com casas TerraCore entregues</div>
+      <div style="font-size:12px;color:#6b6b68;margin-top:2px;letter-spacing:0.03em">{{ t.stat_countries }}</div>
     </div>
   </section>
 
   <section style="padding:70px 0 20px">
-    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:30px">Porquê a TerraCore</h6>
+    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:30px">{{ t.why_kicker }}</h6>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#0a0a0a;border:1px solid #0a0a0a">
       <div style="padding:28px;background:#fff">
         <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:16px;margin-bottom:14px">01</div>
-        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">Preço de fábrica</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">Sem intermediários — encomenda direta da linha de produção, com tipologia e acabamento a pedido.</p>
+        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">{{ t.why1_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">{{ t.why1_body }}</p>
       </div>
       <div style="padding:28px;background:#fff">
         <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:16px;margin-bottom:14px">02</div>
-        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">Configurada à medida</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">Área, layout e equipamento ajustados ao terreno — não ao que está em exposição.</p>
+        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">{{ t.why2_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">{{ t.why2_body }}</p>
       </div>
       <div style="padding:28px;background:#fff">
         <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:16px;margin-bottom:14px">03</div>
-        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">Inspecionada na origem</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">A MedLink Trade audita a fábrica e valida a qualidade antes do embarque.</p>
+        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">{{ t.why3_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">{{ t.why3_body }}</p>
       </div>
       <div style="padding:28px;background:#fff">
         <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:16px;margin-bottom:14px">04</div>
-        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">Suporte local</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">Componentes críticos em stock em Portugal, entrega em 24 a 48 horas.</p>
+        <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">{{ t.why4_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">{{ t.why4_body }}</p>
       </div>
     </div>
   </section>
 
   <section id="colecao" style="padding:76px 0 20px">
-    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px">Nova coleção</h6>
-    <h2 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);text-transform:uppercase;margin:0 0 12px;max-width:26ch">Cápsulas, módulos, cabanas e domos</h2>
-    <p style="font-size:15px;line-height:1.6;color:#4a4a48;max-width:64ch;margin:0 0 8px">Dezanove configurações, de cápsulas compactas a duplex de dois pisos e domos de glamping. Contacte-nos para disponibilidade e prazos.</p>
+    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px">{{ t.colecao_kicker }}</h6>
+    <h2 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);text-transform:uppercase;margin:0 0 12px;max-width:26ch">{{ t.colecao_title }}</h2>
+    <p style="font-size:15px;line-height:1.6;color:#4a4a48;max-width:64ch;margin:0 0 8px">{{ t.colecao_sub }}</p>
 
     <nav aria-label="Modelos da coleção" style="position:sticky;top:0;z-index:5;background:#fff;display:flex;flex-wrap:wrap;gap:4px 22px;padding:18px 0 14px;margin-top:14px;border-bottom:1px solid #0a0a0a">
       <sc-for list="{{ novaColecao }}" as="m" hint-placeholder-count="20">
@@ -142,46 +147,48 @@
       <sc-if value="{{ selHasPreco }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:24px;padding:24px;border:1px solid #0a0a0a">
           <div style="flex:0 0 auto">
-            <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b6b68;margin-bottom:6px">Preço</div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b6b68;margin-bottom:6px">{{ t.price_label }}</div>
             <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,38px)">{{ sel.preco }}</div>
-            <div style="display:inline-block;margin-top:10px;font-size:12px;font-weight:600;padding:7px 14px;background:#0a0a0a;color:#fff">Aproveite 10% na sua primeira encomenda</div>
+            <div style="display:inline-block;margin-top:10px;font-size:12px;font-weight:600;padding:7px 14px;background:#0a0a0a;color:#fff">{{ t.discount_badge }}</div>
           </div>
-          <p style="flex:1 1 260px;min-width:0;font-size:13.5px;line-height:1.6;color:#4a4a48;margin:0">Valor da casa. Transporte, IVA, instalação, mobiliário e eletrodomésticos são calculados consoante o seu projeto e vêm numa segunda fatura, à parte. Tratamos nós de tudo — fale com o nosso agente por WhatsApp ou chamada.</p>
+          <p style="flex:1 1 260px;min-width:0;font-size:13.5px;line-height:1.6;color:#4a4a48;margin:0">{{ t.price_note }}</p>
         </div>
       </sc-if>
-      <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:22px">
+
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:22px">
+        <button type="button" onClick="{{ openBuy }}" style="cursor:pointer;background:#0a0a0a;color:#fff;border:0;padding:13px 24px;font-weight:700;font-size:14px" style-hover="opacity:0.8">{{ t.buy_cta_open }}</button>
         <div style="display:grid;gap:7px;justify-items:start">
-          <a href="tel:+351937773935" style="text-decoration:none;background:#0a0a0a;color:#fff;padding:13px 24px;font-weight:600;font-size:14px" style-hover="opacity:0.75">Ligar · 937 773 935</a>
-          <span style="font-size:12px;color:#6b6b68">Segunda a sexta</span>
+          <a href="tel:+351937773935" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 24px;font-weight:600;font-size:14px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">{{ t.call_label }} · 937 773 935</a>
+          <span style="font-size:12px;color:#6b6b68">{{ t.avail_call }}</span>
         </div>
         <div style="display:grid;gap:7px;justify-items:start">
           <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 24px;font-weight:600;font-size:14px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">WhatsApp · 937 773 935</a>
-          <span style="font-size:12px;color:#6b6b68">7 dias por semana</span>
+          <span style="font-size:12px;color:#6b6b68">{{ t.avail_whatsapp }}</span>
         </div>
       </div>
 
       <div style="margin-top:32px;padding:26px;border:1px solid #d8d8d5">
-        <h4 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:19px;margin:0 0 16px;text-transform:uppercase">Como funciona o pagamento</h4>
+        <h4 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:19px;margin:0 0 16px;text-transform:uppercase">{{ t.payment_title }}</h4>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px">
           <div>
             <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px">01</div>
-            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Proposta aprovada por si</div>
-            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">Nada é cobrado antes de validar o modelo, os acabamentos, o prazo e o valor final com o nosso agente.</p>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">{{ t.pay1_title }}</div>
+            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">{{ t.pay1_body }}</p>
           </div>
           <div>
             <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px">02</div>
-            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Fatura emitida via Stripe</div>
-            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">Todas as faturas e cobranças são processadas exclusivamente pela Stripe, com pagamentos encriptados e rastreáveis.</p>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">{{ t.pay2_title }}</div>
+            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">{{ t.pay2_body }}</p>
           </div>
           <div>
             <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px">03</div>
-            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Produção e validação visual</div>
-            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">Recebe fotos e vídeos da produção; o pagamento só é libertado à fábrica após a sua aprovação da qualidade.</p>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">{{ t.pay3_title }}</div>
+            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">{{ t.pay3_body }}</p>
           </div>
           <div>
             <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px">04</div>
-            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Duas faturas separadas</div>
-            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">Uma fatura com o valor da casa e outra, à parte, com transporte, IVA e instalação — cada custo claro e identificado.</p>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">{{ t.pay4_title }}</div>
+            <p style="font-size:13px;line-height:1.55;color:#6b6b68;margin:0">{{ t.pay4_body }}</p>
           </div>
         </div>
       </div>
@@ -189,10 +196,10 @@
   </section>
 
   <section id="showroom" style="padding:76px 0 20px">
-    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px">Perguntas frequentes</h6>
-    <h2 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,36px);text-transform:uppercase;margin:0 0 30px;max-width:24ch">Porque não visita um showroom</h2>
+    <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px">{{ t.faq_kicker }}</h6>
+    <h2 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,36px);text-transform:uppercase;margin:0 0 30px;max-width:24ch">{{ t.faq_title }}</h2>
     <div class="faqGrid" style="display:grid;grid-template-columns:44px 1fr;gap:0">
-      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
         <div style="display:contents">
           <span style="font-family:'Big Shoulders Display',sans-serif;font-size:14px;padding:22px 0;border-top:1px solid #d8d8d5">{{ f.n }}</span>
           <div style="padding:22px 0;border-top:1px solid #d8d8d5">
@@ -206,75 +213,295 @@
 
   <section style="padding:70px 0 30px;border-top:1px solid #0a0a0a;margin-top:20px">
     <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
-      <p style="font-size:14px;line-height:1.65;color:#4a4a48;max-width:62ch;margin:0"><strong style="color:#0a0a0a">TerraCore</strong> responde pela casa — especificação técnica e suporte local. <strong style="color:#0a0a0a">MedLink Trade</strong> é o motor de importação — a garantia de que a transação internacional é segura, otimizada fiscalmente e inspecionada na origem.</p>
-      <a href="index.html" style="text-decoration:none;color:#0a0a0a;padding:13px 24px;font-weight:600;font-size:14px;border:1.5px solid #0a0a0a;flex-shrink:0" style-hover="opacity:0.6">Conhecer a MedLink Trade</a>
+      <p style="font-size:14px;line-height:1.65;color:#4a4a48;max-width:62ch;margin:0"><strong style="color:#0a0a0a">TerraCore</strong>{{ t.dual_mid1 }}<strong style="color:#0a0a0a">MedLink Trade</strong>{{ t.dual_mid2 }}</p>
+      <a href="index.html" style="text-decoration:none;color:#0a0a0a;padding:13px 24px;font-weight:600;font-size:14px;border:1.5px solid #0a0a0a;flex-shrink:0" style-hover="opacity:0.6">{{ t.dual_cta }}</a>
     </div>
   </section>
 
   <footer style="margin:24px 0 40px;background:#0a0a0a;color:#fff;padding:44px 40px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
     <div>
-      <h6 style="color:#9a9a97;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px">Pedidos ou assistência</h6>
+      <h6 style="color:#9a9a97;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px">{{ t.footer_kicker }}</h6>
       <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(28px,4.4vw,42px)">937 773 935</div>
       <p style="margin:8px 0 0;font-size:13px;color:#9a9a97">TerraCore Engineering</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#9a9a97">{{ t.office_line }}</p>
     </div>
-    <a href="tel:+351937773935" style="text-decoration:none;background:#fff;color:#0a0a0a;padding:15px 28px;font-weight:600;font-size:15px" style-hover="opacity:0.8">Ligar agora</a>
+    <a href="tel:+351937773935" style="text-decoration:none;background:#fff;color:#0a0a0a;padding:15px 28px;font-weight:600;font-size:15px" style-hover="opacity:0.8">{{ t.footer_cta }}</a>
   </footer>
+
+  <sc-if value="{{ buyOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(10,10,10,0.7);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px">
+      <div style="background:#fff;max-width:520px;width:100%;padding:32px;position:relative;max-height:88vh;overflow:auto">
+        <button type="button" onClick="{{ closeBuy }}" aria-label="{{ t.buy_close_aria }}" style="position:absolute;top:16px;right:16px;background:none;border:0;cursor:pointer;font-size:22px;color:#0a0a0a;line-height:1">×</button>
+
+        <div style="display:flex;gap:6px;margin-bottom:26px">
+          <sc-for list="{{ buySteps }}" as="bs" hint-placeholder-count="4">
+            <span style="height:3px;flex:1;background:{{ bs.color }}"></span>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ isBuyStep0 }}" hint-placeholder-val="{{ true }}">
+          <div style="text-align:center;padding:8px 0">
+            <div style="width:48px;height:48px;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px">✓</div>
+            <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;margin:0 0 10px">{{ t.buy_step0_title }}</h3>
+            <p style="font-size:14px;line-height:1.6;color:#4a4a48;margin:0 0 26px">{{ t.buy_step0_pre }}<strong>{{ sel.nome }}</strong>{{ t.buy_step0_post }}</p>
+            <button type="button" onClick="{{ toBuyStep1 }}" style="cursor:pointer;background:#0a0a0a;color:#fff;border:0;padding:13px 26px;font-weight:600;font-size:14px">{{ t.buy_step0_cta }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBuyStep1 }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;margin:0 0 6px">{{ t.buy_step1_title }}</h3>
+            <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0 0 18px">{{ t.buy_ddp_pre }}<strong>{{ t.buy_ddp_bold }}</strong>{{ t.buy_ddp_post }}</p>
+            <p style="font-size:12.5px;line-height:1.55;color:#9a9a97;margin:0 0 22px">{{ t.buy_responsibility }}</p>
+            <div style="display:grid;gap:12px">
+              <sc-for list="{{ carriers }}" as="c" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:14px;border:1.5px solid #0a0a0a;padding:14px 16px;flex-wrap:wrap">
+                  <img src="{{ c.logo }}" alt="{{ c.name }}" style="height:24px;width:auto;max-width:84px;object-fit:contain">
+                  <div style="flex:1;min-width:100px">
+                    <div style="font-size:14px;font-weight:600">{{ c.name }}</div>
+                    <sc-if value="{{ c.cheapest }}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size:10.5px;font-weight:600;color:#0a0a0a;text-transform:uppercase;letter-spacing:0.05em">{{ t.carrier_cheapest }}</span>
+                    </sc-if>
+                  </div>
+                  <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:17px">{{ c.priceFmt }} €</div>
+                  <button type="button" onClick="{{ c.select }}" style="cursor:pointer;background:#0a0a0a;color:#fff;border:0;padding:9px 16px;font-weight:600;font-size:13px">{{ t.carrier_select }}</button>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBuyStep2 }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:8px 0">
+            <div style="width:48px;height:48px;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px">✓</div>
+            <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;margin:0 0 16px">{{ t.buy_step2_title }}</h3>
+            <div style="text-align:left;border:1px solid #d8d8d5;padding:18px;margin-bottom:24px;font-size:13.5px;line-height:2;color:#0a0a0a">
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b68">{{ t.buy_row_carrier }}</span><span style="font-weight:600">{{ buyCarrierName }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b68">{{ t.buy_row_cost }}</span><span style="font-weight:600">{{ buyCarrierPriceFmt }} €</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b68">{{ t.buy_row_delivery }}</span><span style="font-weight:600">{{ t.buy_delivery_value }}</span></div>
+            </div>
+            <button type="button" onClick="{{ toBuyStep3 }}" style="cursor:pointer;background:#0a0a0a;color:#fff;border:0;padding:13px 26px;font-weight:600;font-size:14px">{{ t.buy_step2_cta }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBuyStep3 }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:8px 0">
+            <div style="width:48px;height:48px;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px">✓</div>
+            <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;margin:0 0 10px">{{ t.buy_step3_title }}</h3>
+            <p style="font-size:14px;line-height:1.6;color:#4a4a48;margin:0 0 22px">{{ t.buy_step3_body }}</p>
+            <div style="text-align:left;border:1px solid #d8d8d5;padding:18px;margin-bottom:24px;font-size:13.5px;line-height:2;color:#0a0a0a">
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b68">{{ t.buy_row_model }}</span><span style="font-weight:600">{{ sel.nome }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b68">{{ t.buy_row_carrier }}</span><span style="font-weight:600">{{ buyCarrierName }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b68">{{ t.buy_row_delivery }}</span><span style="font-weight:600">{{ t.buy_delivery_value }}</span></div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+              <button type="button" onClick="{{ closeBuy }}" style="cursor:pointer;background:#0a0a0a;color:#fff;border:0;padding:13px 24px;font-weight:600;font-size:14px">{{ t.buy_step3_cta }}</button>
+              <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 20px;font-weight:600;font-size:14px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">{{ t.buy_agent_whatsapp }}</a>
+              <a href="tel:+351937773935" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 20px;font-weight:600;font-size:14px;border:1.5px solid #0a0a0a" style-hover="opacity:0.6">{{ t.buy_agent_call }}</a>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
 
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const T = {
+  pt: {
+    nav_models: "Modelos",
+    hero_title: "Estruturas modulares, à especificação do seu terreno",
+    hero_sub: "Dezanove configurações, de cápsulas compactas a duplex de dois pisos. Encomendadas de fábrica, inspecionadas na origem, entregues prontas a instalar.",
+    cta_models: "Ver as 19 configurações", cta_showroom: "Porque não há showroom",
+    stat_configs: "Configurações", stat_area: "Área habitável", stat_families_value: "Quatro", stat_families: "Famílias construtivas", stat_guests: "Hóspedes", stat_countries: "Países com casas TerraCore entregues",
+    why_kicker: "Porquê a TerraCore",
+    why1_title: "Preço de fábrica", why1_body: "Sem intermediários — encomenda direta da linha de produção, com tipologia e acabamento a pedido.",
+    why2_title: "Configurada à medida", why2_body: "Área, layout e equipamento ajustados ao terreno — não ao que está em exposição.",
+    why3_title: "Inspecionada na origem", why3_body: "A MedLink Trade audita a fábrica e valida a qualidade antes do embarque.",
+    why4_title: "Suporte local", why4_body: "Componentes críticos em stock em Portugal, entrega em 24 a 48 horas.",
+    colecao_kicker: "Nova coleção", colecao_title: "Cápsulas, módulos, cabanas e domos", colecao_sub: "Dezanove configurações, de cápsulas compactas a duplex de dois pisos e domos de glamping. Contacte-nos para disponibilidade e prazos.",
+    price_label: "Preço", discount_badge: "Aproveite 10% na sua primeira encomenda",
+    price_note: "Valor da casa. Transporte, IVA, instalação, mobiliário e eletrodomésticos são calculados consoante o seu projeto e vêm numa segunda fatura, à parte. Tratamos nós de tudo — fale com o nosso agente por WhatsApp ou chamada.",
+    call_label: "Ligar", avail_call: "Segunda a sexta", avail_whatsapp: "7 dias por semana",
+    payment_title: "Como funciona o pagamento",
+    pay1_title: "Proposta aprovada por si", pay1_body: "Nada é cobrado antes de validar o modelo, os acabamentos, o prazo e o valor final com o nosso agente.",
+    pay2_title: "Fatura emitida via Stripe", pay2_body: "Todas as faturas e cobranças são processadas exclusivamente pela Stripe, com pagamentos encriptados e rastreáveis.",
+    pay3_title: "Pagamento na totalidade", pay3_body: "São unidades já fabricadas, prontas para levantamento — sem fase de produção a aguardar. O valor é pago integralmente, com o transporte incluído na mesma fatura.",
+    pay4_title: "Envio ou levantamento", pay4_body: "Confirmado o pagamento, a unidade é preparada para envio ou levantamento, conforme acordado.",
+    faq_kicker: "Perguntas frequentes", faq_title: "Porque não visita um showroom",
+    dual_mid1: " responde pela casa — especificação técnica e suporte local. ", dual_mid2: " é o motor de importação — a garantia de que a transação internacional é segura, otimizada fiscalmente e inspecionada na origem.",
+    dual_cta: "Conhecer a MedLink Trade",
+    footer_kicker: "Pedidos ou assistência", footer_cta: "Ligar agora",
+    buy_cta_open: "Enviar pedido de orçamento", buy_step0_title: "Pedido enviado para a fábrica", buy_step0_pre: "Um agente nosso vai entrar em contacto consigo sobre o modelo ", buy_step0_post: ". Depois de esclarecidas as suas dúvidas e avançarmos com o pedido, avaliamos consigo a melhor transportadora.", buy_step0_cta: "Continuar →", buy_step1_title: "MedLink: a avaliar consigo a melhor transportadora", buy_ddp_pre: "Damos prioridade a transportadoras com ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — Entrega com Direitos Pagos — que inclui frete total desde a origem até ao seu endereço, desalfandegamento de exportação e importação, e os impostos e direitos de entrada.", buy_responsibility: "Da sua parte: descarregar a mercadoria no local de destino (salvo acordo em contrário) e confirmar a receção.", carrier_cheapest: "Mais económica", carrier_select: "Selecionar", buy_step2_title: "Transporte confirmado — DDP", buy_row_carrier: "Transportadora", buy_row_cost: "Custo de transporte", buy_row_delivery: "Prazo de entrega", buy_delivery_value: "35 a 45 dias", buy_step2_cta: "Gerar fatura segura →", buy_step3_title: "Fatura segura gerada", buy_step3_body: "A fatura inclui o produto e o transporte. Assim que for liquidada, iniciamos o pedido de entrega na sua casa, com acompanhamento contínuo antes e depois da entrega.", buy_row_model: "Modelo", buy_step3_cta: "Concluir", buy_agent_whatsapp: "Falar com agente · WhatsApp", buy_agent_call: "Ligar · 937 773 935", buy_close_aria: "Fechar", office_line: "Escritórios em Lisboa e Porto",
+    familia_capsula: "Cápsula", familia_duplex: "Duplex", familia_modulo: "Módulo", familia_cabana: "Cabana", familia_contentor: "Contentor dobrável", familia_domo: "Domo"
+  },
+  en: {
+    nav_models: "Models",
+    hero_title: "Modular structures, built to your site's specification",
+    hero_sub: "Nineteen configurations, from compact capsules to two-storey duplexes. Ordered from the factory, inspected at origin, delivered ready to install.",
+    cta_models: "See the 19 configurations", cta_showroom: "Why there's no showroom",
+    stat_configs: "Configurations", stat_area: "Living area", stat_families_value: "Four", stat_families: "Building families", stat_guests: "Guests", stat_countries: "Countries with TerraCore homes delivered",
+    why_kicker: "Why TerraCore",
+    why1_title: "Factory price", why1_body: "No middlemen — your order goes straight to the production line, with layout and finish to your specification.",
+    why2_title: "Built to order", why2_body: "Area, layout and equipment matched to your site — not to what's on display.",
+    why3_title: "Inspected at origin", why3_body: "MedLink Trade audits the factory and validates quality before shipment.",
+    why4_title: "Local support", why4_body: "Critical components in stock in Portugal, delivered within 24 to 48 hours.",
+    colecao_kicker: "New collection", colecao_title: "Capsules, modules, cabins and domes", colecao_sub: "Nineteen configurations, from compact capsules to two-storey duplexes and glamping domes. Contact us for availability and lead times.",
+    price_label: "Price", discount_badge: "Enjoy 10% off your first order",
+    price_note: "Price of the home. Freight, VAT, installation, furniture and appliances are quoted for your project and come on a separate second invoice. We handle all of it — talk to our agent by WhatsApp or phone.",
+    call_label: "Call", avail_call: "Monday to Friday", avail_whatsapp: "7 days a week",
+    payment_title: "How payment works",
+    pay1_title: "Proposal approved by you", pay1_body: "Nothing is charged before you validate the model, finishes, timeline and final price with our agent.",
+    pay2_title: "Invoice issued via Stripe", pay2_body: "All invoices and charges are processed exclusively through Stripe, with encrypted, traceable payments.",
+    pay3_title: "Payment in full", pay3_body: "These are units already manufactured, ready for pickup — there's no production stage to wait for. The amount is paid in full, with shipping included in the same invoice.",
+    pay4_title: "Shipping or pickup", pay4_body: "Once payment is confirmed, the unit is prepared for shipping or pickup, as agreed.",
+    faq_kicker: "Frequently asked questions", faq_title: "Why there's no showroom to visit",
+    dual_mid1: " is responsible for the home — technical specification and local support. ", dual_mid2: " is the import engine — the guarantee that the international transaction is secure, tax-optimised and inspected at origin.",
+    dual_cta: "Meet MedLink Trade",
+    footer_kicker: "Orders or support", footer_cta: "Call now",
+    buy_cta_open: "Submit quote request", buy_step0_title: "Order sent to the factory", buy_step0_pre: "One of our agents will contact you about model ", buy_step0_post: ". Once your questions are answered and we move forward with the order, we'll assess the best carrier together.", buy_step0_cta: "Continue →", buy_step1_title: "MedLink: assessing the best carrier with you", buy_ddp_pre: "We prioritise carriers with ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — full freight from origin to your address, export and import customs clearance, and entry taxes and duties.", buy_responsibility: "On your side: unloading the goods at destination (unless otherwise agreed) and confirming receipt.", carrier_cheapest: "Most affordable", carrier_select: "Select", buy_step2_title: "Shipping confirmed — DDP", buy_row_carrier: "Carrier", buy_row_cost: "Shipping cost", buy_row_delivery: "Delivery time", buy_delivery_value: "35 to 45 days", buy_step2_cta: "Generate secure invoice →", buy_step3_title: "Secure invoice generated", buy_step3_body: "The invoice covers the product and shipping. Once it's settled, we start delivery to your address, with continuous support before and after delivery.", buy_row_model: "Model", buy_step3_cta: "Done", buy_agent_whatsapp: "Talk to an agent · WhatsApp", buy_agent_call: "Call · 937 773 935", buy_close_aria: "Close", office_line: "Offices in Lisbon and Porto",
+    familia_capsula: "Capsule", familia_duplex: "Duplex", familia_modulo: "Module", familia_cabana: "Cabin", familia_contentor: "Foldable container", familia_domo: "Dome"
+  },
+  es: {
+    nav_models: "Modelos",
+    hero_title: "Estructuras modulares, a la especificación de su terreno",
+    hero_sub: "Diecinueve configuraciones, desde cápsulas compactas hasta dúplex de dos plantas. Encargadas de fábrica, inspeccionadas en origen, entregadas listas para instalar.",
+    cta_models: "Ver las 19 configuraciones", cta_showroom: "Por qué no hay showroom",
+    stat_configs: "Configuraciones", stat_area: "Área habitable", stat_families_value: "Cuatro", stat_families: "Familias constructivas", stat_guests: "Huéspedes", stat_countries: "Países con casas TerraCore entregadas",
+    why_kicker: "Por qué TerraCore",
+    why1_title: "Precio de fábrica", why1_body: "Sin intermediarios — pedido directo de la línea de producción, con distribución y acabado a su medida.",
+    why2_title: "Configurada a medida", why2_body: "Área, distribución y equipamiento ajustados al terreno — no a lo que está en exposición.",
+    why3_title: "Inspeccionada en origen", why3_body: "MedLink Trade audita la fábrica y valida la calidad antes del embarque.",
+    why4_title: "Soporte local", why4_body: "Componentes críticos en stock en Portugal, entrega en 24 a 48 horas.",
+    colecao_kicker: "Nueva colección", colecao_title: "Cápsulas, módulos, cabañas y domos", colecao_sub: "Diecinueve configuraciones, desde cápsulas compactas hasta dúplex de dos plantas y domos de glamping. Contáctenos para disponibilidad y plazos.",
+    price_label: "Precio", discount_badge: "Aproveche un 10% en su primer pedido",
+    price_note: "Valor de la vivienda. Transporte, IVA, instalación, mobiliario y electrodomésticos se calculan según su proyecto y llegan en una segunda factura, aparte. Nos encargamos de todo — hable con nuestro agente por WhatsApp o llamada.",
+    call_label: "Llamar", avail_call: "Lunes a viernes", avail_whatsapp: "7 días a la semana",
+    payment_title: "Cómo funciona el pago",
+    pay1_title: "Propuesta aprobada por usted", pay1_body: "No se cobra nada antes de validar el modelo, los acabados, el plazo y el valor final con nuestro agente.",
+    pay2_title: "Factura emitida vía Stripe", pay2_body: "Todas las facturas y cobros se procesan exclusivamente a través de Stripe, con pagos cifrados y rastreables.",
+    pay3_title: "Pago en su totalidad", pay3_body: "Son unidades ya fabricadas, listas para retirar — sin fase de producción que esperar. El importe se paga íntegramente, con el transporte incluido en la misma factura.",
+    pay4_title: "Envío o retirada", pay4_body: "Confirmado el pago, la unidad se prepara para envío o retirada, según lo acordado.",
+    faq_kicker: "Preguntas frecuentes", faq_title: "Por qué no visita un showroom",
+    dual_mid1: " responde por la casa — especificación técnica y soporte local. ", dual_mid2: " es el motor de importación — la garantía de que la transacción internacional es segura, fiscalmente optimizada e inspeccionada en origen.",
+    dual_cta: "Conocer MedLink Trade",
+    footer_kicker: "Pedidos o asistencia", footer_cta: "Llamar ahora",
+    buy_cta_open: "Enviar solicitud de presupuesto", buy_step0_title: "Pedido enviado a la fábrica", buy_step0_pre: "Uno de nuestros agentes se pondrá en contacto con usted sobre el modelo ", buy_step0_post: ". Una vez aclaradas sus dudas y avancemos con el pedido, evaluamos juntos la mejor transportadora.", buy_step0_cta: "Continuar →", buy_step1_title: "MedLink: evaluando con usted la mejor transportadora", buy_ddp_pre: "Damos prioridad a transportistas con ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — Entrega con Derechos Pagados — que incluye flete total desde el origen hasta su dirección, despacho aduanero de exportación e importación, y los impuestos y derechos de entrada.", buy_responsibility: "De su parte: descargar la mercancía en el lugar de destino (salvo acuerdo en contrario) y confirmar la recepción.", carrier_cheapest: "Más económica", carrier_select: "Seleccionar", buy_step2_title: "Transporte confirmado — DDP", buy_row_carrier: "Transportadora", buy_row_cost: "Costo de transporte", buy_row_delivery: "Plazo de entrega", buy_delivery_value: "35 a 45 días", buy_step2_cta: "Generar factura segura →", buy_step3_title: "Factura segura generada", buy_step3_body: "La factura incluye el producto y el transporte. Una vez liquidada, iniciamos el pedido de entrega en su casa, con acompañamiento continuo antes y después de la entrega.", buy_row_model: "Modelo", buy_step3_cta: "Finalizar", buy_agent_whatsapp: "Hablar con un agente · WhatsApp", buy_agent_call: "Llamar · 937 773 935", buy_close_aria: "Cerrar", office_line: "Oficinas en Lisboa y Oporto",
+    familia_capsula: "Cápsula", familia_duplex: "Dúplex", familia_modulo: "Módulo", familia_cabana: "Cabaña", familia_contentor: "Contenedor plegable", familia_domo: "Domo"
+  }
+};
+
 const NOVA_COLECAO = [
-  { nome: "E3", familia: "Cápsula", full: "e3.jpg", preco: "17.950 €" },
-  { nome: "E5", familia: "Cápsula", full: "e5.jpg", preco: "26.950 €" },
-  { nome: "E6", familia: "Cápsula", full: "e6.jpg", preco: "28.950 €" },
-  { nome: "E8", familia: "Cápsula", full: "e8.jpg", preco: "34.950 €" },
-  { nome: "D8", familia: "Duplex", full: "d8.jpg", preco: "78.950 €" },
-  { nome: "A1 Compacto", familia: "Módulo", full: "a1a.jpg", preco: "12.950 €" },
-  { nome: "A1 Estendido", familia: "Módulo", full: "a1b.jpg", preco: "19.950 €" },
-  { nome: "A2", familia: "Módulo", full: "a2.jpg", preco: "30.950 €" },
-  { nome: "A3", familia: "Módulo", full: "a3.jpg", preco: "75.950 €" },
-  { nome: "D1", familia: "Duplex", full: "d1.jpg", preco: "80.950 €" },
-  { nome: "N1", familia: "Cabana", full: "n1.jpg", preco: "14.950 €" },
-  { nome: "N2", familia: "Cabana", full: "n2.jpg", preco: "17.950 €" },
-  { nome: "N2 Plus", familia: "Cabana", full: "n2plus.jpg", preco: "20.950 €" },
-  { nome: "N2 Plus-D", familia: "Duplex", full: "n2plusd.jpg", preco: "40.950 €" },
-  { nome: "F20 Básico", familia: "Contentor dobrável", full: "f20b.jpg", preco: "14.950 €" },
-  { nome: "F20 Intermédio / F40", familia: "Contentor dobrável", full: "f20m40.jpg", preco: "16.950 €" },
-  { nome: "C1", familia: "Domo", full: "c1.jpg" },
-  { nome: "C2", familia: "Domo", full: "c2.jpg" },
-  { nome: "C3", familia: "Domo", full: "c3.jpg" }
+  { nome: { pt: "E3", en: "E3", es: "E3" }, familiaKey: "capsula", full: "e3.jpg", preco: "17.950 €" },
+  { nome: { pt: "E5", en: "E5", es: "E5" }, familiaKey: "capsula", full: "e5.jpg", preco: "26.950 €" },
+  { nome: { pt: "E6", en: "E6", es: "E6" }, familiaKey: "capsula", full: "e6.jpg", preco: "28.950 €" },
+  { nome: { pt: "E8", en: "E8", es: "E8" }, familiaKey: "capsula", full: "e8.jpg", preco: "34.950 €" },
+  { nome: { pt: "D8", en: "D8", es: "D8" }, familiaKey: "duplex", full: "d8.jpg", preco: "78.950 €" },
+  { nome: { pt: "A1 Compacto", en: "A1 Compact", es: "A1 Compacto" }, familiaKey: "modulo", full: "a1a.jpg", preco: "12.950 €" },
+  { nome: { pt: "A1 Estendido", en: "A1 Extended", es: "A1 Extendido" }, familiaKey: "modulo", full: "a1b.jpg", preco: "19.950 €" },
+  { nome: { pt: "A2", en: "A2", es: "A2" }, familiaKey: "modulo", full: "a2.jpg", preco: "30.950 €" },
+  { nome: { pt: "A3", en: "A3", es: "A3" }, familiaKey: "modulo", full: "a3.jpg", preco: "75.950 €" },
+  { nome: { pt: "D1", en: "D1", es: "D1" }, familiaKey: "duplex", full: "d1.jpg", preco: "80.950 €" },
+  { nome: { pt: "N1", en: "N1", es: "N1" }, familiaKey: "cabana", full: "n1.jpg", preco: "14.950 €" },
+  { nome: { pt: "N2", en: "N2", es: "N2" }, familiaKey: "cabana", full: "n2.jpg", preco: "17.950 €" },
+  { nome: { pt: "N2 Plus", en: "N2 Plus", es: "N2 Plus" }, familiaKey: "cabana", full: "n2plus.jpg", preco: "20.950 €" },
+  { nome: { pt: "N2 Plus-D", en: "N2 Plus-D", es: "N2 Plus-D" }, familiaKey: "duplex", full: "n2plusd.jpg", preco: "40.950 €" },
+  { nome: { pt: "F20 Básico", en: "F20 Basic", es: "F20 Básico" }, familiaKey: "contentor", full: "f20b.jpg", preco: "14.950 €" },
+  { nome: { pt: "F20 Intermédio / F40", en: "F20 Intermediate / F40", es: "F20 Intermedio / F40" }, familiaKey: "contentor", full: "f20m40.jpg", preco: "16.950 €" },
+  { nome: { pt: "C1", en: "C1", es: "C1" }, familiaKey: "domo", full: "c1.jpg" },
+  { nome: { pt: "C2", en: "C2", es: "C2" }, familiaKey: "domo", full: "c2.jpg" },
+  { nome: { pt: "C3", en: "C3", es: "C3" }, familiaKey: "domo", full: "c3.jpg" }
 ];
 
-const FAQS = [
-  { q: "Porque não visitamos um modelo em exposição?", a: "Não mantemos unidades paradas em parque nem showroom com custos fixos. Trabalhamos em modelo direto de fábrica — direct-to-site — o que permite configurar a casa ao seu terreno em vez de vender o que está disponível em exposição." },
-  { q: "Como sei que a casa vem certa, sem a poder ver antes?", a: "Cada unidade é configurada por encomenda — layout, acabamentos, equipamento — antes de entrar em produção. Antes do contentor ser selado, recebe um dossiê de inspeção pré-embarque: fotos e vídeo da unidade montada e testada na fábrica." },
-  { q: "Qual o papel da MedLink Trade nisto?", a: "A MedLink Trade é a nossa estrutura de importação: audita a fábrica, acompanha o controlo de qualidade antes do embarque e trata do desalfandegamento. A TerraCore responde pela casa; a MedLink Trade responde pela transação internacional." },
-  { q: "E se precisar de assistência depois de instalada?", a: "Componentes críticos — ferragens, vedantes, sistemas elétricos — ficam em stock local, com entrega em 24 a 48 horas." },
-  { q: "Porque não têm fábrica em Portugal?", a: "Não fabricamos em Portugal porque o valor não está no edifício — está na garantia. Produzimos em fábricas certificadas que auditamos diretamente, porque é aí que existe a escala e especialização que sustenta o preço e o prazo das casas modulares. O que trazemos para Portugal é o controlo: inspecionamos antes do embarque, tratamos da importação e damos suporte local. A fábrica é parceira; a responsabilidade pela casa é nossa." }
+const FAQS = {
+  pt: [
+    { q: "Porque não visitamos um modelo em exposição?", a: "Não mantemos unidades paradas em parque nem showroom com custos fixos. Trabalhamos em modelo direto de fábrica — direct-to-site — o que permite configurar a casa ao seu terreno em vez de vender o que está disponível em exposição." },
+    { q: "Como sei que a casa vem certa, sem a poder ver antes?", a: "Cada unidade é configurada por encomenda — layout, acabamentos, equipamento — antes de entrar em produção. Antes do contentor ser selado, recebe um dossiê de inspeção pré-embarque: fotos e vídeo da unidade montada e testada na fábrica." },
+    { q: "Qual o papel da MedLink Trade nisto?", a: "A MedLink Trade é a nossa estrutura de importação: audita a fábrica, acompanha o controlo de qualidade antes do embarque e trata do desalfandegamento. A TerraCore responde pela casa; a MedLink Trade responde pela transação internacional." },
+    { q: "E se precisar de assistência depois de instalada?", a: "Componentes críticos — ferragens, vedantes, sistemas elétricos — ficam em stock local, com entrega em 24 a 48 horas." },
+    { q: "Porque não têm fábrica em Portugal?", a: "Não fabricamos em Portugal porque o valor não está no edifício — está na garantia. Produzimos em fábricas certificadas que auditamos diretamente, porque é aí que existe a escala e especialização que sustenta o preço e o prazo das casas modulares. O que trazemos para Portugal é o controlo: inspecionamos antes do embarque, tratamos da importação e damos suporte local. A fábrica é parceira; a responsabilidade pela casa é nossa." }
+  ],
+  en: [
+    { q: "Why isn't there a display model to visit?", a: "We don't keep units sitting in a lot or a showroom with fixed overheads. We work on a direct-from-factory model — direct-to-site — which lets us configure the home to your site instead of selling whatever happens to be on display." },
+    { q: "How do I know the home is right, without seeing it first?", a: "Every unit is configured to order — layout, finishes, equipment — before it enters production. Before the container is sealed, you receive a pre-shipment inspection dossier: photos and video of the unit assembled and tested at the factory." },
+    { q: "What's MedLink Trade's role in this?", a: "MedLink Trade is our import structure: it audits the factory, oversees quality control before shipment and handles customs clearance. TerraCore answers for the home; MedLink Trade answers for the international transaction." },
+    { q: "What if I need support after it's installed?", a: "Critical components — hardware, seals, electrical systems — are kept in local stock, delivered within 24 to 48 hours." },
+    { q: "Why don't you manufacture in Portugal?", a: "We don't manufacture in Portugal because the value isn't in the building — it's in the guarantee. We produce in certified factories that we audit directly, because that's where the scale and specialisation that sustain the price and lead time of modular homes exist. What we bring to Portugal is control: we inspect before shipment, handle the import and provide local support. The factory is a partner; responsibility for the home is ours." }
+  ],
+  es: [
+    { q: "¿Por qué no visitamos un modelo en exposición?", a: "No mantenemos unidades paradas en un parque ni en un showroom con costes fijos. Trabajamos con un modelo directo de fábrica — direct-to-site — que permite configurar la casa a su terreno en lugar de vender lo que hay disponible en exposición." },
+    { q: "¿Cómo sé que la casa viene bien, sin poder verla antes?", a: "Cada unidad se configura por encargo — distribución, acabados, equipamiento — antes de entrar en producción. Antes de que se selle el contenedor, recibe un dossier de inspección previa al embarque: fotos y vídeo de la unidad montada y probada en la fábrica." },
+    { q: "¿Cuál es el papel de MedLink Trade en esto?", a: "MedLink Trade es nuestra estructura de importación: audita la fábrica, supervisa el control de calidad antes del embarque y gestiona el despacho aduanero. TerraCore responde por la casa; MedLink Trade responde por la transacción internacional." },
+    { q: "¿Y si necesito asistencia después de instalada?", a: "Los componentes críticos — herrajes, juntas, sistemas eléctricos — se mantienen en stock local, con entrega en 24 a 48 horas." },
+    { q: "¿Por qué no fabrican en Portugal?", a: "No fabricamos en Portugal porque el valor no está en el edificio — está en la garantía. Producimos en fábricas certificadas que auditamos directamente, porque es ahí donde existe la escala y especialización que sostiene el precio y el plazo de las viviendas modulares. Lo que traemos a Portugal es el control: inspeccionamos antes del embarque, gestionamos la importación y damos soporte local. La fábrica es socia; la responsabilidad de la vivienda es nuestra." }
+  ]
+};
+
+const LANGS = ["pt", "en", "es"];
+
+const CARRIERS = [
+  { name: "MSC", logo: "msc.svg", price: 2100 },
+  { name: "CMA CGM", logo: "cma-cgm.svg", price: 2200 },
+  { name: "Maersk", logo: "maersk.png", price: 2350 }
 ];
 
 class Component extends DCLogic {
-  state = { selIdx: 0 };
+  state = { selIdx: 0, lang: "pt", buyOpen: false, buyStep: 0, buyCarrierIdx: null };
+
+  componentDidMount() {
+    try {
+      const saved = localStorage.getItem("medlink_lang");
+      if (saved && T[saved]) this.setState({ lang: saved });
+    } catch (e) {}
+  }
+
+  setLang(l) {
+    this.setState({ lang: l });
+    try { localStorage.setItem("medlink_lang", l); } catch (e) {}
+  }
 
   renderVals() {
     const s = this.state;
+    const t = T[s.lang];
+    const cheapest = Math.min(...CARRIERS.map(c => c.price));
+    const carrier = s.buyCarrierIdx != null ? CARRIERS[s.buyCarrierIdx] : null;
     return {
+      t,
+      langs: LANGS.map(l => ({ code: l.toUpperCase(), select: () => this.setLang(l), color: l === s.lang ? "#0a0a0a" : "#9a9a97" })),
       novaColecao: NOVA_COLECAO.map((m, i) => ({
-        nome: m.nome,
+        nome: m.nome[s.lang],
         select: () => this.setState({ selIdx: i }),
         rule: i === s.selIdx ? "#0a0a0a" : "transparent",
         ink: i === s.selIdx ? "#0a0a0a" : "#9a9a97"
       })),
-      sel: NOVA_COLECAO[s.selIdx],
+      sel: { ...NOVA_COLECAO[s.selIdx], nome: NOVA_COLECAO[s.selIdx].nome[s.lang], familia: t["familia_" + NOVA_COLECAO[s.selIdx].familiaKey] },
       selHasPreco: !!NOVA_COLECAO[s.selIdx].preco,
       counter: String(s.selIdx + 1).padStart(2, "0") + " / " + NOVA_COLECAO.length,
       prev: () => this.setState({ selIdx: (s.selIdx - 1 + NOVA_COLECAO.length) % NOVA_COLECAO.length }),
       next: () => this.setState({ selIdx: (s.selIdx + 1) % NOVA_COLECAO.length }),
-      faqs: FAQS.map((f, i) => ({ n: String(i + 1).padStart(2, "0"), q: f.q, a: f.a }))
+      faqs: FAQS[s.lang].map((f, i) => ({ n: String(i + 1).padStart(2, "0"), q: f.q, a: f.a })),
+
+      buyOpen: s.buyOpen,
+      isBuyStep0: s.buyStep === 0, isBuyStep1: s.buyStep === 1, isBuyStep2: s.buyStep === 2, isBuyStep3: s.buyStep === 3,
+      buySteps: [0, 1, 2, 3].map(i => ({ color: i <= s.buyStep ? "#0a0a0a" : "#d8d8d5" })),
+      carriers: CARRIERS.map((c, i) => ({
+        name: c.name, logo: c.logo, priceFmt: c.price.toLocaleString("pt-PT"),
+        cheapest: c.price === cheapest,
+        select: () => this.setState({ buyCarrierIdx: i, buyStep: 2 })
+      })),
+      buyCarrierName: carrier ? carrier.name : "",
+      buyCarrierPriceFmt: carrier ? carrier.price.toLocaleString("pt-PT") : "",
+      openBuy: () => this.setState({ buyOpen: true, buyStep: 0, buyCarrierIdx: null }),
+      closeBuy: () => this.setState({ buyOpen: false, buyStep: 0, buyCarrierIdx: null }),
+      toBuyStep1: () => this.setState({ buyStep: 1 }),
+      toBuyStep3: () => this.setState({ buyStep: 3 })
     };
   }
 }
+
 </script>
 </body>
 </html>
