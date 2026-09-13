@@ -27,6 +27,9 @@
     .mirrorGrid{grid-template-columns:1fr!important;}
     .mirrorGrid img{aspect-ratio:4/3!important;height:auto!important;}
     .mirrorThumbs{grid-template-columns:repeat(2,1fr)!important;}
+    .certsRow{justify-content:center;gap:10px!important;}
+    .certsRow > div{width:30%!important;min-width:96px;}
+    .certsRow span{height:40px!important;padding:6px 10px!important;}
     nav[aria-label]{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
     nav[aria-label]::-webkit-scrollbar{display:none;}
     nav[aria-label] button{flex:0 0 auto;}
@@ -109,6 +112,31 @@
         <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:16px;margin-bottom:14px">04</div>
         <h3 style="font-size:17px;font-weight:600;margin:0 0 8px">{{ t.why4_title }}</h3>
         <p style="font-size:13.5px;line-height:1.55;color:#6b6b68;margin:0">{{ t.why4_body }}</p>
+      </div>
+    </div>
+    <div style="margin-top:40px">
+      <h6 style="color:#6b6b68;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px">{{ t.certs_kicker }}</h6>
+      <div class="certsRow" style="display:flex;flex-wrap:wrap;gap:16px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:112px">
+          <span style="display:flex;align-items:center;justify-content:center;height:52px;padding:10px 14px;border:1px solid #d8d8d5;width:100%;box-sizing:border-box"><img src="ul.png" alt="UL — Underwriters Laboratories" style="height:100%;width:auto;max-width:100%;object-fit:contain"></span>
+          <span style="font-size:10.5px;line-height:1.3;color:#9a9a97;text-align:center">{{ t.cert_ul_desc }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:112px">
+          <span style="display:flex;align-items:center;justify-content:center;height:52px;padding:10px 14px;border:1px solid #d8d8d5;width:100%;box-sizing:border-box"><img src="ce.jpg" alt="Marcação CE" style="height:100%;width:auto;max-width:50px;object-fit:contain"></span>
+          <span style="font-size:10.5px;line-height:1.3;color:#9a9a97;text-align:center">{{ t.cert_ce_desc }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:112px">
+          <span style="display:flex;align-items:center;justify-content:center;height:52px;padding:10px 14px;border:1px solid #d8d8d5;width:100%;box-sizing:border-box"><img src="iso9001.jfif" alt="ISO 9001" style="height:100%;width:auto;max-width:100%;object-fit:contain"></span>
+          <span style="font-size:10.5px;line-height:1.3;color:#9a9a97;text-align:center">{{ t.cert_iso_desc }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:112px">
+          <span style="display:flex;align-items:center;justify-content:center;height:52px;padding:10px 14px;border:1px solid #d8d8d5;width:100%;box-sizing:border-box"><img src="bureau-veritas.png" alt="Bureau Veritas" style="height:100%;width:auto;max-width:100%;object-fit:contain"></span>
+          <span style="font-size:10.5px;line-height:1.3;color:#9a9a97;text-align:center">{{ t.cert_bv_desc }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:112px">
+          <span style="display:flex;align-items:center;justify-content:center;height:52px;padding:10px 14px;border:1px solid #d8d8d5;width:100%;box-sizing:border-box"><img src="astm.webp" alt="ASTM International" style="height:100%;width:auto;max-width:100%;object-fit:contain"></span>
+          <span style="font-size:10.5px;line-height:1.3;color:#9a9a97;text-align:center">{{ t.cert_astm_desc }}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -362,6 +390,8 @@ const T = {
     why2_title: "Configurada à medida", why2_body: "Área, layout e equipamento ajustados ao terreno — não ao que está em exposição.",
     why3_title: "Inspecionada na origem", why3_body: "A MedLink Trade audita a fábrica e valida a qualidade antes do embarque.",
     why4_title: "Suporte local", why4_body: "Componentes críticos em stock em Portugal, entrega em 24 a 48 horas.",
+    certs_kicker: "Certificações das nossas fábricas",
+    cert_ul_desc: "Segurança elétrica certificada", cert_ce_desc: "Conformidade com as normas europeias", cert_iso_desc: "Sistema de gestão da qualidade certificado", cert_bv_desc: "Inspeção e certificação independente", cert_astm_desc: "Normas técnicas internacionais",
     colecao_kicker: "Nova coleção", colecao_title: "Cápsulas, módulos, cabanas e domos", colecao_sub: "Dezanove configurações, de cápsulas compactas a duplex de dois pisos e domos de glamping. Contacte-nos para disponibilidade e prazos.",
     price_label: "Preço", discount_badge: "Aproveite 10% na sua primeira encomenda",
     price_note: "Valor da casa. Transporte, IVA, instalação, mobiliário e eletrodomésticos são calculados consoante o seu projeto e vêm numa segunda fatura, à parte. Tratamos nós de tudo — fale com o nosso agente por WhatsApp ou chamada.",
@@ -400,6 +430,8 @@ const T = {
     why2_title: "Built to order", why2_body: "Area, layout and equipment matched to your site — not to what's on display.",
     why3_title: "Inspected at origin", why3_body: "MedLink Trade audits the factory and validates quality before shipment.",
     why4_title: "Local support", why4_body: "Critical components in stock in Portugal, delivered within 24 to 48 hours.",
+    certs_kicker: "Our factories' certifications",
+    cert_ul_desc: "Certified electrical safety", cert_ce_desc: "Compliant with EU standards", cert_iso_desc: "Certified quality management system", cert_bv_desc: "Independent inspection and certification", cert_astm_desc: "International technical standards",
     colecao_kicker: "New collection", colecao_title: "Capsules, modules, cabins and domes", colecao_sub: "Nineteen configurations, from compact capsules to two-storey duplexes and glamping domes. Contact us for availability and lead times.",
     price_label: "Price", discount_badge: "Enjoy 10% off your first order",
     price_note: "Price of the home. Freight, VAT, installation, furniture and appliances are quoted for your project and come on a separate second invoice. We handle all of it — talk to our agent by WhatsApp or phone.",
@@ -438,6 +470,8 @@ const T = {
     why2_title: "Configurada a medida", why2_body: "Área, distribución y equipamiento ajustados al terreno — no a lo que está en exposición.",
     why3_title: "Inspeccionada en origen", why3_body: "MedLink Trade audita la fábrica y valida la calidad antes del embarque.",
     why4_title: "Soporte local", why4_body: "Componentes críticos en stock en Portugal, entrega en 24 a 48 horas.",
+    certs_kicker: "Certificaciones de nuestras fábricas",
+    cert_ul_desc: "Seguridad eléctrica certificada", cert_ce_desc: "Conforme a las normas europeas", cert_iso_desc: "Sistema de gestión de calidad certificado", cert_bv_desc: "Inspección y certificación independiente", cert_astm_desc: "Normas técnicas internacionales",
     colecao_kicker: "Nueva colección", colecao_title: "Cápsulas, módulos, cabañas y domos", colecao_sub: "Diecinueve configuraciones, desde cápsulas compactas hasta dúplex de dos plantas y domos de glamping. Contáctenos para disponibilidad y plazos.",
     price_label: "Precio", discount_badge: "Aproveche un 10% en su primer pedido",
     price_note: "Valor de la vivienda. Transporte, IVA, instalación, mobiliario y electrodomésticos se calculan según su proyecto y llegan en una segunda factura, aparte. Nos encargamos de todo — hable con nuestro agente por WhatsApp o llamada.",
