@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { margin:0; background:#0a0a0a; -webkit-font-smoothing:antialiased; font-family:'Barlow',system-ui,sans-serif; color:#f2f2f0; }
+  body { margin:0; background:#ffffff; -webkit-font-smoothing:antialiased; font-family:'Barlow',system-ui,sans-serif; color:#0a0a0a; }
   a { color:inherit; }
   a:hover { color:#F4AC0C; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
@@ -21,12 +21,14 @@
   @media (max-width:640px){
     .wrap{padding-left:16px!important;padding-right:16px!important;}
     header{flex-wrap:wrap;gap:12px;}
-    header nav{gap:14px!important;font-size:13px!important;flex-wrap:wrap;}
+    header nav{gap:12px!important;font-size:13px!important;flex-wrap:wrap;}
     .heroGrid{grid-template-columns:1fr!important;}
     .statGrid{grid-template-columns:repeat(2,1fr)!important;}
     nav[aria-label]{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
     nav[aria-label]::-webkit-scrollbar{display:none;}
     nav[aria-label] button{flex:0 0 auto;}
+    .ctaRow{flex-direction:column;align-items:stretch!important;gap:12px!important;}
+    .ctaRow > button, .ctaRow > div, .ctaRow > div a{width:100%;box-sizing:border-box;text-align:center;}
   }
 </style>
 </helmet>
@@ -35,9 +37,15 @@
 
   <header style="display:flex;align-items:center;justify-content:space-between;padding:26px 0">
     <img src="trx-wordmark-trim.png" alt="TRX" style="height:28px;width:auto">
-    <nav style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600">
-      <a href="index.html" style="text-decoration:none;color:#c9c9c9">MedLink Trade</a>
-      <a href="#catalogo" style="text-decoration:none;color:#c9c9c9">Modelos</a>
+    <nav style="display:flex;align-items:center;gap:22px;font-size:14px;font-weight:600">
+      <a href="index.html" style="text-decoration:none;color:#5a5a5a">MedLink Trade</a>
+      <a href="#catalogo" style="text-decoration:none;color:#5a5a5a">{{ t.nav_models }}</a>
+      <a href="#retroescavadoras" style="text-decoration:none;color:#5a5a5a">{{ t.nav_diggers }}</a>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800">
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <button type="button" onClick="{{ l.select }}" style="appearance:none;background:none;border:0;cursor:pointer;padding:4px 4px;color:{{ l.color }}">{{ l.code }}</button>
+        </sc-for>
+      </div>
       <a href="tel:+351937773935" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:10px 18px;border-radius:2px;font-weight:700" style-hover="background:#ffc233">937 773 935</a>
     </nav>
   </header>
@@ -48,11 +56,11 @@
         <span class="fade1" style="display:inline-flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#F4AC0C;margin-bottom:22px">
           <span style="width:22px;height:3px;background:#F4AC0C"></span>Industrial Machinery
         </span>
-        <h1 class="fade2" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(36px,5.6vw,58px);line-height:1.04;letter-spacing:-0.01em;margin:0 0 22px;text-transform:uppercase;text-wrap:balance">Máquinas <span style="color:#F4AC0C">configuradas</span> para a sua obra</h1>
-        <p class="fade3" style="font-size:17px;line-height:1.65;max-width:48ch;margin:0 0 32px;color:#b8b8b8">Sem sala de exposição, sem stock parado em parque. Cada empilhador é encomendado à fábrica com a tonelagem, bateria e configuração que o seu terreno exige — modelo direct-to-site.</p>
+        <h1 class="fade2" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(36px,5.6vw,58px);line-height:1.04;letter-spacing:-0.01em;margin:0 0 22px;text-transform:uppercase;text-wrap:balance">{{ t.hero_title_a }}<span style="color:#F4AC0C">{{ t.hero_title_hi }}</span>{{ t.hero_title_b }}</h1>
+        <p class="fade3" style="font-size:17px;line-height:1.65;max-width:48ch;margin:0 0 32px;color:#4a4a4a">{{ t.hero_sub }}</p>
         <div class="fade4" style="display:flex;flex-wrap:wrap;gap:14px">
-          <a href="#catalogo" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:15px 28px;border-radius:2px;font-weight:700;font-size:15px" style-hover="background:#ffc233">Ver os 10 modelos</a>
-          <a href="#showroom" style="text-decoration:none;background:none;color:#f2f2f0;padding:15px 28px;border-radius:2px;font-weight:700;font-size:15px;border:1.5px solid #333" style-hover="border-color:#F4AC0C;color:#F4AC0C">Porque não há showroom</a>
+          <a href="#catalogo" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:15px 28px;border-radius:2px;font-weight:700;font-size:15px" style-hover="background:#ffc233">{{ t.cta_models }}</a>
+          <a href="#showroom" style="text-decoration:none;background:none;color:#0a0a0a;padding:15px 28px;border-radius:2px;font-weight:700;font-size:15px;border:1.5px solid #dddddd" style-hover="border-color:#F4AC0C;color:#F4AC0C">{{ t.cta_showroom }}</a>
         </div>
       </div>
       <div style="position:relative">
@@ -64,65 +72,65 @@
     </div>
   </section>
 
-  <section class="statGrid" style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #262626;border-bottom:1px solid #262626">
-    <div style="text-align:center;padding:26px 8px;border-right:1px solid #262626">
+  <section class="statGrid" style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5">
+    <div style="text-align:center;padding:26px 8px;border-right:1px solid #e5e5e5">
       <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:#F4AC0C">10</div>
-      <div style="font-size:12px;color:#9a9a9a;margin-top:2px">Modelos</div>
+      <div style="font-size:12px;color:#6b6b6b;margin-top:2px">{{ t.stat_models }}</div>
     </div>
-    <div style="text-align:center;padding:26px 8px;border-right:1px solid #262626">
+    <div style="text-align:center;padding:26px 8px;border-right:1px solid #e5e5e5">
       <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:#F4AC0C">1–10t</div>
-      <div style="font-size:12px;color:#9a9a9a;margin-top:2px">Capacidade</div>
+      <div style="font-size:12px;color:#6b6b6b;margin-top:2px">{{ t.stat_capacity }}</div>
     </div>
-    <div style="text-align:center;padding:26px 8px;border-right:1px solid #262626">
+    <div style="text-align:center;padding:26px 8px;border-right:1px solid #e5e5e5">
       <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:#F4AC0C">3000mm</div>
-      <div style="font-size:12px;color:#9a9a9a;margin-top:2px">Elevação</div>
+      <div style="font-size:12px;color:#6b6b6b;margin-top:2px">{{ t.stat_lift }}</div>
     </div>
-    <div style="text-align:center;padding:26px 8px;border-right:1px solid #262626">
+    <div style="text-align:center;padding:26px 8px;border-right:1px solid #e5e5e5">
       <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:#F4AC0C">60/80V</div>
-      <div style="font-size:12px;color:#9a9a9a;margin-top:2px">Chumbo ou lítio</div>
+      <div style="font-size:12px;color:#6b6b6b;margin-top:2px">{{ t.stat_battery }}</div>
     </div>
     <div style="text-align:center;padding:26px 8px">
       <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:#F4AC0C">12</div>
-      <div style="font-size:12px;color:#9a9a9a;margin-top:2px">Países com máquinas TRX entregues</div>
+      <div style="font-size:12px;color:#6b6b6b;margin-top:2px">{{ t.stat_countries }}</div>
     </div>
   </section>
 
   <section style="padding:70px 0 20px">
-    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">Porquê a TRX</h6>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#262626;border:1px solid #262626">
-      <div style="padding:26px;background:#0a0a0a">
+    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">{{ t.why_kicker }}</h6>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#e5e5e5;border:1px solid #e5e5e5">
+      <div style="padding:26px;background:#ffffff">
         <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;color:#F4AC0C;margin-bottom:12px">01</div>
-        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">Direto de fábrica</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#9a9a9a;margin:0">Sem parque nem intermediário — encomenda entra direto na linha de produção.</p>
+        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">{{ t.why1_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b6b;margin:0">{{ t.why1_body }}</p>
       </div>
-      <div style="padding:26px;background:#0a0a0a">
+      <div style="padding:26px;background:#ffffff">
         <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;color:#F4AC0C;margin-bottom:12px">02</div>
-        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">Configurada à medida</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#9a9a9a;margin:0">Motor, sistema hidráulico e engates ajustados ao projeto — não ao que está em exposição.</p>
+        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">{{ t.why2_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b6b;margin:0">{{ t.why2_body }}</p>
       </div>
-      <div style="padding:26px;background:#0a0a0a">
+      <div style="padding:26px;background:#ffffff">
         <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;color:#F4AC0C;margin-bottom:12px">03</div>
-        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">Inspecionada na origem</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#9a9a9a;margin:0">A MedLink Trade audita a fábrica e valida a qualidade antes do embarque.</p>
+        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">{{ t.why3_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b6b;margin:0">{{ t.why3_body }}</p>
       </div>
-      <div style="padding:26px;background:#0a0a0a">
+      <div style="padding:26px;background:#ffffff">
         <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;color:#F4AC0C;margin-bottom:12px">04</div>
-        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">Suporte local</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#9a9a9a;margin:0">Peças críticas em stock em Portugal, entrega em 24 a 48 horas.</p>
+        <h3 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;text-transform:uppercase">{{ t.why4_title }}</h3>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6b6b;margin:0">{{ t.why4_body }}</p>
       </div>
     </div>
   </section>
 
   <section id="catalogo" style="padding:76px 0 20px">
-    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">Catálogo</h6>
-    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,32px);text-transform:uppercase;margin:0 0 10px">Dez empilhadores, 1 a 10 toneladas</h2>
-    <p style="font-size:15px;line-height:1.6;color:#9a9a9a;max-width:64ch;margin:0 0 8px">Tonelagem, bateria e cor da carroçaria personalizáveis. Contacte-nos para preço e disponibilidade.</p>
+    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">{{ t.catalog_kicker }}</h6>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,32px);text-transform:uppercase;margin:0 0 10px">{{ t.catalog_title }}</h2>
+    <p style="font-size:15px;line-height:1.6;color:#6b6b6b;max-width:64ch;margin:0 0 8px">{{ t.catalog_sub }}</p>
 
-    <nav aria-label="Modelos do catálogo" style="position:sticky;top:0;z-index:5;background:#0a0a0a;display:flex;flex-wrap:wrap;gap:4px 24px;padding:18px 0 14px;margin-top:10px;border-bottom:1px solid #262626">
+    <nav aria-label="Modelos do catálogo" style="position:sticky;top:0;z-index:5;background:#ffffff;display:flex;flex-wrap:wrap;gap:4px 24px;padding:18px 0 14px;margin-top:10px;border-bottom:1px solid #e5e5e5">
       <sc-for list="{{ catalogo }}" as="m" hint-placeholder-count="10">
         <button type="button" onClick="{{ m.select }}" style="appearance:none;background:none;border:0;border-bottom:3px solid {{ m.rule }};padding:2px 0 8px;cursor:pointer;display:grid;gap:1px;text-align:left;color:{{ m.ink }};font-family:'Oswald',sans-serif">
           <span style="font-weight:600;font-size:14px">{{ m.code }}</span>
-          <span style="font-size:10px;letter-spacing:0.05em;opacity:0.65;color:#9a9a9a">{{ m.load }}</span>
+          <span style="font-size:10px;letter-spacing:0.05em;opacity:0.65;color:#6b6b6b">{{ m.load }}</span>
         </button>
       </sc-for>
     </nav>
@@ -130,15 +138,15 @@
     <article style="margin-top:26px">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px">
         <div>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#F4AC0C;font-family:'Oswald',sans-serif">Empilhador elétrico</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#F4AC0C;font-family:'Oswald',sans-serif">{{ t.label_forklift }}</span>
           <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(28px,3.8vw,40px);margin:6px 0 0;text-transform:uppercase">{{ sel.code }}</h3>
         </div>
         <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-          <span style="font-size:12px;font-weight:600;color:#7a7a7a;font-variant-numeric:tabular-nums">{{ counter }}</span>
-          <button type="button" onClick="{{ prev }}" aria-label="Modelo anterior" style="width:38px;height:38px;border-radius:2px;border:1.5px solid #333;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#f2f2f0" style-hover="border-color:#F4AC0C;color:#F4AC0C">
+          <span style="font-size:12px;font-weight:600;color:#8a8a8a;font-variant-numeric:tabular-nums">{{ counter }}</span>
+          <button type="button" onClick="{{ prev }}" aria-label="Modelo anterior" style="width:38px;height:38px;border-radius:2px;border:1.5px solid #dddddd;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0a0a" style-hover="border-color:#F4AC0C;color:#F4AC0C">
             <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
           </button>
-          <button type="button" onClick="{{ next }}" aria-label="Modelo seguinte" style="width:38px;height:38px;border-radius:2px;border:1.5px solid #333;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#f2f2f0" style-hover="border-color:#F4AC0C;color:#F4AC0C">
+          <button type="button" onClick="{{ next }}" aria-label="Modelo seguinte" style="width:38px;height:38px;border-radius:2px;border:1.5px solid #dddddd;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0a0a" style-hover="border-color:#F4AC0C;color:#F4AC0C">
             <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
           </button>
         </div>
@@ -146,31 +154,33 @@
 
       <div style="display:flex;flex-wrap:wrap;gap:28px">
         <div style="position:relative;flex:2 1 340px;min-width:0;max-width:640px">
-          <span style="position:absolute;top:14px;left:14px;z-index:2;background:#F4AC0C;color:#0a0a0a;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 12px;border-radius:2px">Configurável</span>
+          <span style="position:absolute;top:14px;left:14px;z-index:2;background:#F4AC0C;color:#0a0a0a;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 12px;border-radius:2px">{{ t.badge_configurable }}</span>
           <img src="{{ sel.img }}" alt="Empilhador {{ sel.code }}" style="width:100%;height:auto;border-radius:2px;background:#eeece5;mix-blend-mode:multiply;display:block">
         </div>
         <div style="flex:1 1 260px;min-width:0">
           <div style="display:grid;gap:0">
             <sc-for list="{{ sel.specs }}" as="s" hint-placeholder-count="7">
-              <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid #262626;font-size:13.5px">
-                <span style="color:#9a9a9a">{{ s.k }}</span>
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid #e5e5e5;font-size:13.5px">
+                <span style="color:#6b6b6b">{{ s.k }}</span>
                 <span style="font-family:'Oswald',sans-serif;font-weight:600;text-align:right">{{ s.v }}</span>
               </div>
             </sc-for>
           </div>
           <div style="margin-top:22px;padding:20px;border:1.5px solid #F4AC0C;border-radius:2px">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#F4AC0C;margin-bottom:6px;font-family:'Oswald',sans-serif">Preço</div>
-            <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px">Sob consulta</div>
-            <p style="font-size:13px;line-height:1.55;color:#9a9a9a;margin:8px 0 0">Valor de fábrica consoante tonelagem, bateria e quantidade. Transporte, IVA e entrega em segunda fatura, à parte.</p>
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#F4AC0C;margin-bottom:6px;font-family:'Oswald',sans-serif">{{ t.price_label }}</div>
+            <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px">{{ t.price_value }}</div>
+            <p style="font-size:13px;line-height:1.55;color:#6b6b6b;margin:8px 0 0">{{ t.price_note }}</p>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:20px;margin-top:20px">
+
+          <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;margin-top:20px">
+            <button type="button" onClick="{{ openBuyForklift }}" style="cursor:pointer;background:#F4AC0C;color:#0a0a0a;border:0;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px" style-hover="background:#ffc233">{{ t.buy_cta_open }}</button>
             <div style="display:grid;gap:7px;justify-items:start">
-              <a href="tel:+351937773935" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px" style-hover="background:#ffc233">Ligar · 937 773 935</a>
-              <span style="font-size:12px;color:#7a7a7a">Segunda a sexta</span>
+              <a href="tel:+351937773935" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px" style-hover="background:#ffc233">{{ t.call_label }} · 937 773 935</a>
+              <span style="font-size:12px;color:#8a8a8a">{{ t.avail_call }}</span>
             </div>
             <div style="display:grid;gap:7px;justify-items:start">
-              <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#f2f2f0;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #333" style-hover="border-color:#F4AC0C;color:#F4AC0C">WhatsApp · 937 773 935</a>
-              <span style="font-size:12px;color:#7a7a7a">7 dias por semana</span>
+              <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #dddddd" style-hover="border-color:#F4AC0C;color:#F4AC0C">WhatsApp · 937 773 935</a>
+              <span style="font-size:12px;color:#8a8a8a">{{ t.avail_whatsapp }}</span>
             </div>
           </div>
         </div>
@@ -178,101 +188,434 @@
     </article>
   </section>
 
+  <section id="retroescavadoras" style="padding:76px 0 20px">
+    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">{{ t.digger_kicker }}</h6>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,32px);text-transform:uppercase;margin:0 0 10px">{{ t.digger_title }}</h2>
+    <p style="font-size:15px;line-height:1.6;color:#6b6b6b;max-width:64ch;margin:0 0 8px">{{ t.digger_sub }}</p>
+
+    <nav aria-label="Modelos de retroescavadoras" style="position:sticky;top:0;z-index:5;background:#ffffff;display:flex;flex-wrap:wrap;gap:4px 24px;padding:18px 0 14px;margin-top:10px;border-bottom:1px solid #e5e5e5">
+      <sc-for list="{{ diggers }}" as="m" hint-placeholder-count="5">
+        <button type="button" onClick="{{ m.select }}" style="appearance:none;background:none;border:0;border-bottom:3px solid {{ m.rule }};padding:2px 0 8px;cursor:pointer;text-align:left;color:{{ m.ink }};font-family:'Oswald',sans-serif;font-weight:600;font-size:14px">{{ m.code }}</button>
+      </sc-for>
+    </nav>
+
+    <article style="margin-top:26px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#F4AC0C;font-family:'Oswald',sans-serif">{{ t.digger_label }}</span>
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(28px,3.8vw,40px);margin:6px 0 0;text-transform:uppercase">{{ selD.code }}</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <span style="font-size:12px;font-weight:600;color:#8a8a8a;font-variant-numeric:tabular-nums">{{ counterD }}</span>
+          <button type="button" onClick="{{ prevD }}" aria-label="Modelo anterior" style="width:38px;height:38px;border-radius:2px;border:1.5px solid #dddddd;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0a0a" style-hover="border-color:#F4AC0C;color:#F4AC0C">
+            <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
+          </button>
+          <button type="button" onClick="{{ nextD }}" aria-label="Modelo seguinte" style="width:38px;height:38px;border-radius:2px;border:1.5px solid #dddddd;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0a0a0a" style-hover="border-color:#F4AC0C;color:#F4AC0C">
+            <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:28px">
+        <div style="position:relative;flex:2 1 340px;min-width:0;max-width:640px">
+          <img src="{{ selD.img }}" alt="Retroescavadora {{ selD.code }}" style="width:100%;height:auto;border-radius:2px;display:block">
+        </div>
+        <div style="flex:1 1 260px;min-width:0">
+          <div style="display:grid;gap:0">
+            <sc-for list="{{ selD.specs }}" as="s" hint-placeholder-count="8">
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid #e5e5e5;font-size:13.5px">
+                <span style="color:#6b6b6b">{{ s.k }}</span>
+                <span style="font-family:'Oswald',sans-serif;font-weight:600;text-align:right">{{ s.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:22px;padding:20px;border:1.5px solid #F4AC0C;border-radius:2px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#F4AC0C;margin-bottom:6px;font-family:'Oswald',sans-serif">{{ t.price_label }}</div>
+            <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px">{{ selD.preco }}</div>
+            <p style="font-size:13px;line-height:1.55;color:#6b6b6b;margin:8px 0 0">{{ t.digger_price_note }}</p>
+          </div>
+
+          <div class="ctaRow" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;margin-top:20px">
+            <button type="button" onClick="{{ openBuyDigger }}" style="cursor:pointer;background:#F4AC0C;color:#0a0a0a;border:0;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px" style-hover="background:#ffc233">{{ t.buy_cta_open }}</button>
+            <div style="display:grid;gap:7px;justify-items:start">
+              <a href="tel:+351937773935" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px" style-hover="background:#ffc233">{{ t.call_label }} · 937 773 935</a>
+              <span style="font-size:12px;color:#8a8a8a">{{ t.avail_call }}</span>
+            </div>
+            <div style="display:grid;gap:7px;justify-items:start">
+              <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 22px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #dddddd" style-hover="border-color:#F4AC0C;color:#F4AC0C">WhatsApp · 937 773 935</a>
+              <span style="font-size:12px;color:#8a8a8a">{{ t.avail_whatsapp }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div style="margin-top:44px;padding-top:28px;border-top:1px solid #e5e5e5">
+      <h6 style="color:#8a8a8a;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">{{ t.partner_kicker }}</h6>
+      <div style="display:inline-block;max-width:100%;overflow:auto">
+        <img src="partners.png" alt="{{ t.partner_kicker }}" style="height:64px;width:auto;max-width:100%;display:block">
+      </div>
+      <p style="font-size:12.5px;color:#8a8a8a;margin:12px 0 0;max-width:60ch">{{ t.partner_note }}</p>
+    </div>
+  </section>
+
   <section id="showroom" style="padding:76px 0 20px">
-    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">Perguntas frequentes</h6>
-    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,32px);text-transform:uppercase;margin:0 0 30px;max-width:26ch">Porque não visita um showroom</h2>
+    <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'Oswald',sans-serif">{{ t.faq_kicker }}</h6>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,32px);text-transform:uppercase;margin:0 0 30px;max-width:26ch">{{ t.faq_title }}</h2>
     <div style="display:grid;gap:0">
-      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
-        <div style="border-top:1px solid #262626">
-          <button type="button" onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:0;padding:22px 0;cursor:pointer;text-align:left;color:#f2f2f0">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-top:1px solid #e5e5e5">
+          <button type="button" onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:0;padding:22px 0;cursor:pointer;text-align:left;color:#0a0a0a">
             <span style="font-family:'Oswald',sans-serif;font-weight:600;font-size:17px">{{ f.q }}</span>
             <span style="flex-shrink:0;width:28px;height:28px;border-radius:2px;background:#F4AC0C;color:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">{{ f.sign }}</span>
           </button>
           <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0 0 26px;font-size:14.5px;line-height:1.65;color:#a8a8a8;max-width:70ch">{{ f.a }}</p>
+            <p style="margin:0 0 26px;font-size:14.5px;line-height:1.65;color:#4a4a4a;max-width:70ch">{{ f.a }}</p>
           </sc-if>
         </div>
       </sc-for>
     </div>
   </section>
 
-  <section style="padding:70px 0 30px;border-top:1px solid #262626;margin-top:20px">
+  <section style="padding:70px 0 30px;border-top:1px solid #e5e5e5;margin-top:20px">
     <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
       <div style="max-width:60ch">
-        <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Oswald',sans-serif">Duas marcas, papéis claros</h6>
-        <p style="font-size:14.5px;line-height:1.65;color:#a8a8a8;margin:0"><strong style="color:#f2f2f0">TRX</strong> responde pela máquina — especificação técnica e suporte local. <strong style="color:#f2f2f0">MedLink Trade</strong> é o motor de importação — a garantia de que a transação internacional é segura, otimizada fiscalmente e inspecionada na origem.</p>
+        <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Oswald',sans-serif">{{ t.dual_kicker }}</h6>
+        <p style="font-size:14.5px;line-height:1.65;color:#4a4a4a;margin:0"><strong style="color:#0a0a0a">TRX</strong>{{ t.dual_mid1 }}<strong style="color:#0a0a0a">MedLink Trade</strong>{{ t.dual_mid2 }}</p>
       </div>
-      <a href="index.html" style="text-decoration:none;background:none;color:#f2f2f0;padding:13px 24px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #333;flex-shrink:0" style-hover="border-color:#F4AC0C;color:#F4AC0C">Conhecer a MedLink Trade</a>
+      <a href="index.html" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 24px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #dddddd;flex-shrink:0" style-hover="border-color:#F4AC0C;color:#F4AC0C">{{ t.dual_cta }}</a>
     </div>
   </section>
 
   <footer style="margin:24px 0 40px;border-top:3px solid #F4AC0C;padding-top:36px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
     <div>
-      <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Oswald',sans-serif">Pedidos ou assistência</h6>
+      <h6 style="color:#F4AC0C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Oswald',sans-serif">{{ t.footer_kicker }}</h6>
       <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(28px,4.4vw,42px)">937 773 935</div>
-      <p style="margin:8px 0 0;font-size:13px;color:#7a7a7a">TRX · Industrial Machinery</p>
+      <p style="margin:8px 0 0;font-size:13px;color:#8a8a8a">TRX · Industrial Machinery</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#8a8a8a">{{ t.office_line }}</p>
     </div>
-    <a href="tel:+351937773935" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:15px 28px;border-radius:2px;font-weight:700;font-size:15px" style-hover="background:#ffc233">Ligar agora</a>
+    <a href="tel:+351937773935" style="text-decoration:none;background:#F4AC0C;color:#0a0a0a;padding:15px 28px;border-radius:2px;font-weight:700;font-size:15px" style-hover="background:#ffc233">{{ t.footer_cta }}</a>
   </footer>
+
+  <sc-if value="{{ buyOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px">
+      <div style="background:#ffffff;border:1px solid #dddddd;max-width:520px;width:100%;padding:32px;position:relative;max-height:88vh;overflow:auto;border-radius:2px">
+        <button type="button" onClick="{{ closeBuy }}" aria-label="{{ t.buy_close_aria }}" style="position:absolute;top:16px;right:16px;background:none;border:0;cursor:pointer;font-size:22px;color:#0a0a0a;line-height:1">×</button>
+
+        <div style="display:flex;gap:6px;margin-bottom:26px">
+          <sc-for list="{{ buySteps }}" as="bs" hint-placeholder-count="4">
+            <span style="height:3px;flex:1;background:{{ bs.color }}"></span>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ isBuyStep0 }}" hint-placeholder-val="{{ true }}">
+          <div style="text-align:center;padding:8px 0">
+            <div style="width:48px;height:48px;background:#F4AC0C;color:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px;border-radius:2px">✓</div>
+            <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;margin:0 0 10px">{{ t.buy_step0_title }}</h3>
+            <p style="font-size:14px;line-height:1.6;color:#4a4a4a;margin:0 0 26px">{{ t.buy_step0_pre }}<strong style="color:#0a0a0a">{{ buyModelCode }}</strong>{{ t.buy_step0_post }}</p>
+            <button type="button" onClick="{{ toBuyStep1 }}" style="cursor:pointer;background:#F4AC0C;color:#0a0a0a;border:0;padding:13px 26px;border-radius:2px;font-weight:700;font-size:14px">{{ t.buy_step0_cta }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBuyStep1 }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;margin:0 0 6px">{{ t.buy_step1_title }}</h3>
+            <p style="font-size:13.5px;line-height:1.55;color:#6b6b6b;margin:0 0 18px">{{ t.buy_ddp_pre }}<strong style="color:#0a0a0a">{{ t.buy_ddp_bold }}</strong>{{ t.buy_ddp_post }}</p>
+            <p style="font-size:12.5px;line-height:1.55;color:#8a8a8a;margin:0 0 22px">{{ t.buy_responsibility }}</p>
+            <div style="display:grid;gap:12px">
+              <sc-for list="{{ carriers }}" as="c" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:14px;border:1.5px solid #dddddd;padding:14px 16px;flex-wrap:wrap;border-radius:2px">
+                  <span style="background:#f2f2f0;padding:6px 8px;border-radius:2px;display:flex;align-items:center"><img src="{{ c.logo }}" alt="{{ c.name }}" style="height:22px;width:auto;max-width:80px;object-fit:contain"></span>
+                  <div style="flex:1;min-width:100px">
+                    <div style="font-size:14px;font-weight:600">{{ c.name }}</div>
+                    <sc-if value="{{ c.cheapest }}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size:10.5px;font-weight:700;color:#F4AC0C;text-transform:uppercase;letter-spacing:0.05em">{{ t.carrier_cheapest }}</span>
+                    </sc-if>
+                  </div>
+                  <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:17px">{{ c.priceFmt }} €</div>
+                  <button type="button" onClick="{{ c.select }}" style="cursor:pointer;background:#F4AC0C;color:#0a0a0a;border:0;padding:9px 16px;border-radius:2px;font-weight:700;font-size:13px">{{ t.carrier_select }}</button>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBuyStep2 }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:8px 0">
+            <div style="width:48px;height:48px;background:#F4AC0C;color:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px;border-radius:2px">✓</div>
+            <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;margin:0 0 16px">{{ t.buy_step2_title }}</h3>
+            <div style="text-align:left;border:1px solid #dddddd;padding:18px;margin-bottom:24px;font-size:13.5px;line-height:2;color:#0a0a0a;border-radius:2px">
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b6b">{{ t.buy_row_carrier }}</span><span style="font-weight:600">{{ buyCarrierName }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b6b">{{ t.buy_row_cost }}</span><span style="font-weight:600">{{ buyCarrierPriceFmt }} €</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b6b">{{ t.buy_row_delivery }}</span><span style="font-weight:600">{{ t.buy_delivery_value }}</span></div>
+            </div>
+            <button type="button" onClick="{{ toBuyStep3 }}" style="cursor:pointer;background:#F4AC0C;color:#0a0a0a;border:0;padding:13px 26px;border-radius:2px;font-weight:700;font-size:14px">{{ t.buy_step2_cta }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBuyStep3 }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:8px 0">
+            <div style="width:48px;height:48px;background:#F4AC0C;color:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px;border-radius:2px">✓</div>
+            <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;margin:0 0 10px">{{ t.buy_step3_title }}</h3>
+            <p style="font-size:14px;line-height:1.6;color:#4a4a4a;margin:0 0 22px">{{ t.buy_step3_body }}</p>
+            <div style="text-align:left;border:1px solid #dddddd;padding:18px;margin-bottom:24px;font-size:13.5px;line-height:2;color:#0a0a0a;border-radius:2px">
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b6b">{{ t.buy_row_model }}</span><span style="font-weight:600">{{ buyModelCode }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b6b">{{ t.buy_row_carrier }}</span><span style="font-weight:600">{{ buyCarrierName }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#6b6b6b">{{ t.buy_row_delivery }}</span><span style="font-weight:600">{{ t.buy_delivery_value }}</span></div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+              <button type="button" onClick="{{ closeBuy }}" style="cursor:pointer;background:#F4AC0C;color:#0a0a0a;border:0;padding:13px 24px;border-radius:2px;font-weight:700;font-size:14px">{{ t.buy_step3_cta }}</button>
+              <a href="https://wa.me/351937773935" target="_blank" rel="noopener" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 20px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #dddddd" style-hover="border-color:#F4AC0C;color:#F4AC0C">{{ t.buy_agent_whatsapp }}</a>
+              <a href="tel:+351937773935" style="text-decoration:none;background:none;color:#0a0a0a;padding:13px 20px;border-radius:2px;font-weight:700;font-size:14px;border:1.5px solid #dddddd" style-hover="border-color:#F4AC0C;color:#F4AC0C">{{ t.buy_agent_call }}</a>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
 
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const T = {
+  pt: {
+    nav_models: "Modelos",
+    hero_title_a: "Máquinas ", hero_title_hi: "configuradas", hero_title_b: " para a sua obra",
+    hero_sub: "Sem sala de exposição, sem stock parado em parque. Cada empilhador é encomendado à fábrica com a tonelagem, bateria e configuração que o seu terreno exige — modelo direct-to-site.",
+    cta_models: "Ver os 10 modelos", cta_showroom: "Porque não há showroom",
+    stat_models: "Modelos", stat_capacity: "Capacidade", stat_lift: "Elevação", stat_battery: "Chumbo ou lítio", stat_countries: "Países com máquinas TRX entregues",
+    why_kicker: "Porquê a TRX",
+    why1_title: "Direto de fábrica", why1_body: "Sem parque nem intermediário — encomenda entra direto na linha de produção.",
+    why2_title: "Configurada à medida", why2_body: "Motor, sistema hidráulico e engates ajustados ao projeto — não ao que está em exposição.",
+    why3_title: "Inspecionada na origem", why3_body: "A MedLink Trade audita a fábrica e valida a qualidade antes do embarque.",
+    why4_title: "Suporte local", why4_body: "Peças críticas em stock em Portugal, entrega em 24 a 48 horas.",
+    catalog_kicker: "Catálogo", catalog_title: "Dez empilhadores, 1 a 10 toneladas", catalog_sub: "Tonelagem, bateria e cor da carroçaria personalizáveis. Contacte-nos para preço e disponibilidade.",
+    label_forklift: "Empilhador elétrico", badge_configurable: "Configurável",
+    price_label: "Preço", price_value: "Sob consulta", price_note: "Valor de fábrica consoante tonelagem, bateria e quantidade. Transporte, IVA e entrega em segunda fatura, à parte.",
+    call_label: "Ligar", avail_call: "Segunda a sexta", avail_whatsapp: "7 dias por semana",
+    spec_load: "Capacidade de carga", spec_liftheight: "Altura de elevação", spec_length: "Comprimento total", spec_width: "Largura total", spec_height: "Altura total", spec_weight: "Peso próprio", spec_motors: "Motores (elevação / tração)", spec_voltage: "Tensão", spec_battery: "Bateria", spec_tires: "Pneus",
+    battery_value: "Chumbo-ácido ou lítio", customisable: "personalizável",
+    tire_f500r400: "Dianteiro 500-8 / traseiro 400-8", tire_f650r500: "Dianteiro 650-10 / traseiro 500-8", tire_solid: "Pneus maciços",
+    faq_kicker: "Perguntas frequentes", faq_title: "Porque não visita um showroom",
+    dual_kicker: "Duas marcas, papéis claros",
+    dual_mid1: " responde pela máquina — especificação técnica e suporte local. ", dual_mid2: " é o motor de importação — a garantia de que a transação internacional é segura, otimizada fiscalmente e inspecionada na origem.",
+    dual_cta: "Conhecer a MedLink Trade",
+    footer_kicker: "Pedidos ou assistência", footer_cta: "Ligar agora",
+    buy_cta_open: "Enviar pedido de orçamento", buy_step0_title: "Pedido enviado para a fábrica", buy_step0_pre: "Um agente nosso vai entrar em contacto consigo sobre o modelo ", buy_step0_post: ". Depois de esclarecidas as suas dúvidas e avançarmos com o pedido, avaliamos consigo a melhor transportadora.", buy_step0_cta: "Continuar →", buy_step1_title: "MedLink: a avaliar consigo a melhor transportadora", buy_ddp_pre: "Damos prioridade a transportadoras com ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — Entrega com Direitos Pagos — que inclui frete total desde a origem até ao seu endereço, desalfandegamento de exportação e importação, e os impostos e direitos de entrada.", buy_responsibility: "Da sua parte: descarregar a mercadoria no local de destino (salvo acordo em contrário) e confirmar a receção.", carrier_cheapest: "Mais económica", carrier_select: "Selecionar", buy_step2_title: "Transporte confirmado — DDP", buy_row_carrier: "Transportadora", buy_row_cost: "Custo de transporte", buy_row_delivery: "Prazo de entrega", buy_delivery_value: "35 a 45 dias", buy_step2_cta: "Gerar fatura segura →", buy_step3_title: "Fatura segura gerada", buy_step3_body: "A fatura inclui o produto e o transporte. Assim que for liquidada, iniciamos o pedido de entrega na sua casa, com acompanhamento contínuo antes e depois da entrega.", buy_row_model: "Modelo", buy_step3_cta: "Concluir", buy_agent_whatsapp: "Falar com agente · WhatsApp", buy_agent_call: "Ligar · 937 773 935", buy_close_aria: "Fechar", office_line: "Escritórios em Lisboa e Porto",
+    nav_diggers: "Retroescavadoras", digger_kicker: "Nova linha", digger_title: "Retroescavadoras compactas", digger_sub: "Cinco configurações, de mini-retroescavadoras a modelos de maior porte. Contacte-nos para disponibilidade.", digger_label: "Retroescavadora",
+    partner_kicker: "Parceiros de fabricação", partner_note: "Motores e componentes de marcas internacionais — Bosch, Cummins, Perkins, Kubota, Hyundai e outras.",
+    digger_price_note: "Valor de fábrica. Transporte, IVA e entrega em segunda fatura, à parte.",
+    lblEngine: "Motor", lblDigHeight: "Altura máx. de escavação", lblDumpHeight: "Altura máx. de descarga", lblDigDepth: "Profundidade máx. de escavação", lblDigRadius: "Raio máx. de escavação", lblLiftCap: "Capacidade de elevação", lblLiftForce: "Força máx. de elevação", lblRatedLoad: "Carga nominal", lblTurnRadius: "Raio de viragem", lblDumpReach: "Alcance de descarga", lblBackhoeBucket: "Balde da retroescavadora", lblLoaderBucket: "Balde do carregador", lblLoaderLiftCap: "Capacidade de elevação do carregador", lblLoaderDumpHeight: "Altura de descarga do carregador", lblLoaderDumpReach: "Alcance de descarga do carregador", lblHydraulicPressure: "Pressão hidráulica", lblMaxLoadHeight: "Altura máx. de carregamento"
+  },
+  en: {
+    nav_models: "Models",
+    hero_title_a: "Machines ", hero_title_hi: "built to order", hero_title_b: " for your site",
+    hero_sub: "No showroom, no stock sitting in a lot. Every forklift is ordered from the factory with the tonnage, battery and configuration your site requires — a direct-to-site model.",
+    cta_models: "See the 10 models", cta_showroom: "Why there's no showroom",
+    stat_models: "Models", stat_capacity: "Capacity", stat_lift: "Lift height", stat_battery: "Lead-acid or lithium", stat_countries: "Countries with TRX machines delivered",
+    why_kicker: "Why TRX",
+    why1_title: "Direct from the factory", why1_body: "No lot, no middleman — your order goes straight to the production line.",
+    why2_title: "Built to order", why2_body: "Engine, hydraulic system and attachments matched to your project — not to what's on display.",
+    why3_title: "Inspected at origin", why3_body: "MedLink Trade audits the factory and validates quality before shipment.",
+    why4_title: "Local support", why4_body: "Critical parts in stock in Portugal, delivered within 24 to 48 hours.",
+    catalog_kicker: "Catalogue", catalog_title: "Ten forklifts, 1 to 10 tonnes", catalog_sub: "Tonnage, battery and body colour customisable. Contact us for price and availability.",
+    label_forklift: "Electric forklift", badge_configurable: "Configurable",
+    price_label: "Price", price_value: "On request", price_note: "Factory price depending on tonnage, battery and quantity. Freight, VAT and delivery on a separate second invoice.",
+    call_label: "Call", avail_call: "Monday to Friday", avail_whatsapp: "7 days a week",
+    spec_load: "Load capacity", spec_liftheight: "Lift height", spec_length: "Overall length", spec_width: "Overall width", spec_height: "Overall height", spec_weight: "Net weight", spec_motors: "Motors (lift / drive)", spec_voltage: "Voltage", spec_battery: "Battery", spec_tires: "Tyres",
+    battery_value: "Lead-acid or lithium", customisable: "customisable",
+    tire_f500r400: "Front 500-8 / rear 400-8", tire_f650r500: "Front 650-10 / rear 500-8", tire_solid: "Solid tyres",
+    faq_kicker: "Frequently asked questions", faq_title: "Why there's no showroom to visit",
+    dual_kicker: "Two brands, clear roles",
+    dual_mid1: " is responsible for the machine — technical specification and local support. ", dual_mid2: " is the import engine — the guarantee that the international transaction is secure, tax-optimised and inspected at origin.",
+    dual_cta: "Meet MedLink Trade",
+    footer_kicker: "Orders or support", footer_cta: "Call now",
+    buy_cta_open: "Submit quote request", buy_step0_title: "Order sent to the factory", buy_step0_pre: "One of our agents will contact you about model ", buy_step0_post: ". Once your questions are answered and we move forward with the order, we'll assess the best carrier together.", buy_step0_cta: "Continue →", buy_step1_title: "MedLink: assessing the best carrier with you", buy_ddp_pre: "We prioritise carriers with ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — full freight from origin to your address, export and import customs clearance, and entry taxes and duties.", buy_responsibility: "On your side: unloading the goods at destination (unless otherwise agreed) and confirming receipt.", carrier_cheapest: "Most affordable", carrier_select: "Select", buy_step2_title: "Shipping confirmed — DDP", buy_row_carrier: "Carrier", buy_row_cost: "Shipping cost", buy_row_delivery: "Delivery time", buy_delivery_value: "35 to 45 days", buy_step2_cta: "Generate secure invoice →", buy_step3_title: "Secure invoice generated", buy_step3_body: "The invoice covers the product and shipping. Once it's settled, we start delivery to your address, with continuous support before and after delivery.", buy_row_model: "Model", buy_step3_cta: "Done", buy_agent_whatsapp: "Talk to an agent · WhatsApp", buy_agent_call: "Call · 937 773 935", buy_close_aria: "Close", office_line: "Offices in Lisbon and Porto",
+    nav_diggers: "Backhoe loaders", digger_kicker: "New line", digger_title: "Compact backhoe loaders", digger_sub: "Five configurations, from mini backhoe loaders to larger models. Contact us for availability.", digger_label: "Backhoe loader",
+    partner_kicker: "Manufacturing partners", partner_note: "Engines and components from international brands — Bosch, Cummins, Perkins, Kubota, Hyundai and others.",
+    digger_price_note: "Factory price. Freight and VAT on a separate second invoice.",
+    lblEngine: "Engine", lblDigHeight: "Max. digging height", lblDumpHeight: "Max. dumping height", lblDigDepth: "Max. digging depth", lblDigRadius: "Max. digging radius", lblLiftCap: "Lifting capacity", lblLiftForce: "Max. lifting force", lblRatedLoad: "Rated load", lblTurnRadius: "Turning radius", lblDumpReach: "Dumping reach", lblBackhoeBucket: "Backhoe bucket", lblLoaderBucket: "Loader bucket", lblLoaderLiftCap: "Loader lifting capacity", lblLoaderDumpHeight: "Loader dump height", lblLoaderDumpReach: "Loader dump reach", lblHydraulicPressure: "Hydraulic pressure", lblMaxLoadHeight: "Max. loading height"
+  },
+  es: {
+    nav_models: "Modelos",
+    hero_title_a: "Máquinas ", hero_title_hi: "configuradas", hero_title_b: " para su obra",
+    hero_sub: "Sin sala de exposición, sin stock parado en un parque. Cada carretilla se encarga a fábrica con el tonelaje, la batería y la configuración que su terreno exige — modelo direct-to-site.",
+    cta_models: "Ver los 10 modelos", cta_showroom: "Por qué no hay showroom",
+    stat_models: "Modelos", stat_capacity: "Capacidad", stat_lift: "Elevación", stat_battery: "Plomo o litio", stat_countries: "Países con máquinas TRX entregadas",
+    why_kicker: "Por qué TRX",
+    why1_title: "Directo de fábrica", why1_body: "Sin parque ni intermediario — el pedido entra directo en la línea de producción.",
+    why2_title: "Configurada a medida", why2_body: "Motor, sistema hidráulico y enganches ajustados al proyecto — no a lo que está en exposición.",
+    why3_title: "Inspeccionada en origen", why3_body: "MedLink Trade audita la fábrica y valida la calidad antes del embarque.",
+    why4_title: "Soporte local", why4_body: "Piezas críticas en stock en Portugal, entrega en 24 a 48 horas.",
+    catalog_kicker: "Catálogo", catalog_title: "Diez carretillas, de 1 a 10 toneladas", catalog_sub: "Tonelaje, batería y color de la carrocería personalizables. Contáctenos para precio y disponibilidad.",
+    label_forklift: "Carretilla eléctrica", badge_configurable: "Configurable",
+    price_label: "Precio", price_value: "Bajo consulta", price_note: "Valor de fábrica según tonelaje, batería y cantidad. Transporte, IVA y entrega en una segunda factura, aparte.",
+    call_label: "Llamar", avail_call: "Lunes a viernes", avail_whatsapp: "7 días a la semana",
+    spec_load: "Capacidad de carga", spec_liftheight: "Altura de elevación", spec_length: "Longitud total", spec_width: "Anchura total", spec_height: "Altura total", spec_weight: "Peso propio", spec_motors: "Motores (elevación / tracción)", spec_voltage: "Tensión", spec_battery: "Batería", spec_tires: "Neumáticos",
+    battery_value: "Plomo-ácido o litio", customisable: "personalizable",
+    tire_f500r400: "Delantero 500-8 / trasero 400-8", tire_f650r500: "Delantero 650-10 / trasero 500-8", tire_solid: "Neumáticos macizos",
+    faq_kicker: "Preguntas frecuentes", faq_title: "Por qué no visita un showroom",
+    dual_kicker: "Dos marcas, roles claros",
+    dual_mid1: " responde por la máquina — especificación técnica y soporte local. ", dual_mid2: " es el motor de importación — la garantía de que la transacción internacional es segura, fiscalmente optimizada e inspeccionada en origen.",
+    dual_cta: "Conocer MedLink Trade",
+    footer_kicker: "Pedidos o asistencia", footer_cta: "Llamar ahora",
+    buy_cta_open: "Enviar solicitud de presupuesto", buy_step0_title: "Pedido enviado a la fábrica", buy_step0_pre: "Uno de nuestros agentes se pondrá en contacto con usted sobre el modelo ", buy_step0_post: ". Una vez aclaradas sus dudas y avancemos con el pedido, evaluamos juntos la mejor transportadora.", buy_step0_cta: "Continuar →", buy_step1_title: "MedLink: evaluando con usted la mejor transportadora", buy_ddp_pre: "Damos prioridad a transportistas con ", buy_ddp_bold: "Delivered Duty Paid (DDP)", buy_ddp_post: " — Entrega con Derechos Pagados — que incluye flete total desde el origen hasta su dirección, despacho aduanero de exportación e importación, y los impuestos y derechos de entrada.", buy_responsibility: "De su parte: descargar la mercancía en el lugar de destino (salvo acuerdo en contrario) y confirmar la recepción.", carrier_cheapest: "Más económica", carrier_select: "Seleccionar", buy_step2_title: "Transporte confirmado — DDP", buy_row_carrier: "Transportadora", buy_row_cost: "Costo de transporte", buy_row_delivery: "Plazo de entrega", buy_delivery_value: "35 a 45 días", buy_step2_cta: "Generar factura segura →", buy_step3_title: "Factura segura generada", buy_step3_body: "La factura incluye el producto y el transporte. Una vez liquidada, iniciamos el pedido de entrega en su casa, con acompañamiento continuo antes y después de la entrega.", buy_row_model: "Modelo", buy_step3_cta: "Finalizar", buy_agent_whatsapp: "Hablar con un agente · WhatsApp", buy_agent_call: "Llamar · 937 773 935", buy_close_aria: "Cerrar", office_line: "Oficinas en Lisboa y Oporto",
+    nav_diggers: "Retroexcavadoras", digger_kicker: "Nueva línea", digger_title: "Retroexcavadoras compactas", digger_sub: "Cinco configuraciones, desde miniretroexcavadoras hasta modelos de mayor porte. Contáctenos para disponibilidad.", digger_label: "Retroexcavadora",
+    partner_kicker: "Socios de fabricación", partner_note: "Motores y componentes de marcas internacionales — Bosch, Cummins, Perkins, Kubota, Hyundai y otras.",
+    digger_price_note: "Precio de fábrica. Transporte e IVA en una segunda factura, aparte.",
+    lblEngine: "Motor", lblDigHeight: "Altura máx. de excavación", lblDumpHeight: "Altura máx. de descarga", lblDigDepth: "Profundidad máx. de excavación", lblDigRadius: "Radio máx. de excavación", lblLiftCap: "Capacidad de elevación", lblLiftForce: "Fuerza máx. de elevación", lblRatedLoad: "Carga nominal", lblTurnRadius: "Radio de giro", lblDumpReach: "Alcance de descarga", lblBackhoeBucket: "Cuchara de la retroexcavadora", lblLoaderBucket: "Cuchara del cargador", lblLoaderLiftCap: "Capacidad de elevación del cargador", lblLoaderDumpHeight: "Altura de descarga del cargador", lblLoaderDumpReach: "Alcance de descarga del cargador", lblHydraulicPressure: "Presión hidráulica", lblMaxLoadHeight: "Altura máx. de carga"
+  }
+};
+
 const CATALOGO = [
-  { code: "CPD10", load: "1 t", img: "p03-8.jpg", kg: "1000 kg", len: "3170 mm", w: "1200 mm", h: "2150 mm", mass: "1800 kg", motor: "4 / 5 kW", volt: "60 V", tire: "Dianteiro 500-8 / traseiro 400-8" },
-  { code: "CPD15", load: "1,5 t", img: "p04-1.jpg", kg: "1500 kg", len: "3520 mm", w: "1200 mm", h: "2150 mm", mass: "2300 kg", motor: "5 / 5 kW", volt: "60 V", tire: "Dianteiro 650-10 / traseiro 500-8" },
-  { code: "CPD20", load: "2 t", img: "p05-0.jpg", kg: "2000 kg", len: "3720 mm", w: "1200 mm", h: "2150 mm", mass: "2800 kg", motor: "7,5 / 7,5 kW", volt: "60 V", tire: "Dianteiro 650-10 / traseiro 500-8" },
-  { code: "CPD25", load: "2,5 t", img: "p06-0.jpg", kg: "2500 kg", len: "3820 mm", w: "1200 mm", h: "2150 mm", mass: "3200 kg", motor: "10 / 10 kW", volt: "60 V", tire: "Dianteiro 650-10 / traseiro 500-8" },
-  { code: "CPD30", load: "3 t", img: "p07-0.jpg", kg: "3000 kg", len: "3920 mm", w: "1200 mm", h: "2150 mm", mass: "3700 kg", motor: "13 / 13 kW", volt: "60 V", tire: "Dianteiro 650-10 / traseiro 500-8" },
-  { code: "CPD35", load: "3,5 t", img: "p08-8.jpg", kg: "3500 kg", len: "3970 mm", w: "1200 mm", h: "2150 mm", mass: "4200 kg", motor: "15 / 15 kW", volt: "60 V", tire: "Pneus maciços" },
-  { code: "CPD40", load: "4 t", img: "p09-0.jpg", kg: "4000 kg", len: "4020 mm", w: "1200 mm", h: "2130 mm", mass: "4800 kg", motor: "18 / 18 kW", volt: "80 V", tire: "Pneus maciços" },
-  { code: "CPD50", load: "5 t", img: "p10-0.jpg", kg: "5000 kg", len: "4170 mm", w: "1320 mm", h: "2250 mm", mass: "5600 kg", motor: "23 / 23 kW", volt: "80 V", tire: "Pneus maciços" },
-  { code: "CPD70", load: "7 t", img: "p11-0.jpg", kg: "7000 kg", len: "4820 mm", w: "1860 mm", h: "2260 mm", mass: "8700 kg", motor: "21,5 / 25,5 kW", volt: "80 V", tire: "Pneus maciços" },
-  { code: "CPD100", load: "10 t", img: "p12-7.jpg", kg: "10000 kg", len: "5125 mm", w: "2000 mm", h: "2450 mm", mass: "13200 kg", motor: "35 / 25,4 kW", volt: "80 V", tire: "Pneus maciços" }
+  { code: "CPD10", load: "1 t", img: "p03-8.jpg", kg: "1000 kg", len: "3170 mm", w: "1200 mm", h: "2150 mm", mass: "1800 kg", motor: "4 / 5 kW", volt: "60 V", tireKey: "f500r400" },
+  { code: "CPD15", load: "1,5 t", img: "p04-1.jpg", kg: "1500 kg", len: "3520 mm", w: "1200 mm", h: "2150 mm", mass: "2300 kg", motor: "5 / 5 kW", volt: "60 V", tireKey: "f650r500" },
+  { code: "CPD20", load: "2 t", img: "p05-0.jpg", kg: "2000 kg", len: "3720 mm", w: "1200 mm", h: "2150 mm", mass: "2800 kg", motor: "7,5 / 7,5 kW", volt: "60 V", tireKey: "f650r500" },
+  { code: "CPD25", load: "2,5 t", img: "p06-0.jpg", kg: "2500 kg", len: "3820 mm", w: "1200 mm", h: "2150 mm", mass: "3200 kg", motor: "10 / 10 kW", volt: "60 V", tireKey: "f650r500" },
+  { code: "CPD30", load: "3 t", img: "p07-0.jpg", kg: "3000 kg", len: "3920 mm", w: "1200 mm", h: "2150 mm", mass: "3700 kg", motor: "13 / 13 kW", volt: "60 V", tireKey: "f650r500" },
+  { code: "CPD35", load: "3,5 t", img: "p08-8.jpg", kg: "3500 kg", len: "3970 mm", w: "1200 mm", h: "2150 mm", mass: "4200 kg", motor: "15 / 15 kW", volt: "60 V", tireKey: "solid" },
+  { code: "CPD40", load: "4 t", img: "p09-0.jpg", kg: "4000 kg", len: "4020 mm", w: "1200 mm", h: "2130 mm", mass: "4800 kg", motor: "18 / 18 kW", volt: "80 V", tireKey: "solid" },
+  { code: "CPD50", load: "5 t", img: "p10-0.jpg", kg: "5000 kg", len: "4170 mm", w: "1320 mm", h: "2250 mm", mass: "5600 kg", motor: "23 / 23 kW", volt: "80 V", tireKey: "solid" },
+  { code: "CPD70", load: "7 t", img: "p11-0.jpg", kg: "7000 kg", len: "4820 mm", w: "1860 mm", h: "2260 mm", mass: "8700 kg", motor: "21,5 / 25,5 kW", volt: "80 V", tireKey: "solid" },
+  { code: "CPD100", load: "10 t", img: "p12-7.jpg", kg: "10000 kg", len: "5125 mm", w: "2000 mm", h: "2450 mm", mass: "13200 kg", motor: "35 / 25,4 kW", volt: "80 V", tireKey: "solid" }
 ];
 
-const FAQS = [
-  { q: "Porque não têm sala de exposição?", a: "Não mantemos stock parado em parque nem showroom com custos fixos. Trabalhamos em modelo direto de fábrica — direct-to-site — o que permite configurar a máquina à sua medida em vez de vender o que está disponível em exposição." },
-  { q: "Como sei que a máquina vem certa, sem a poder ver antes?", a: "Cada máquina é configurada por encomenda — motor, sistema hidráulico, engates rápidos — antes de entrar em produção. Antes do contentor ser selado, recebe um dossiê de inspeção pré-embarque: fotos e vídeo da máquina montada e testada na fábrica." },
-  { q: "Qual o papel da MedLink Trade nisto?", a: "A MedLink Trade é a nossa estrutura de importação: audita a fábrica, acompanha o controlo de qualidade antes do embarque e trata do desalfandegamento. A TRX responde pela máquina; a MedLink Trade responde pela transação internacional." },
-  { q: "E se precisar de assistência técnica depois de instalada?", a: "Peças críticas de desgaste rápido — filtros, vedantes, mangueiras, unidades de controlo elétrico — ficam em stock local, com entrega em 24 a 48 horas. Não precisa de deslocar a máquina." },
-  { q: "Porque não têm fábrica em Portugal?", a: "Não fabricamos em Portugal porque o valor não está no edifício — está na garantia. Produzimos em fábricas certificadas que auditamos diretamente, porque é aí que existe a escala e especialização que sustenta o preço e o prazo das máquinas. O que trazemos para Portugal é o controlo: inspecionamos antes do embarque, tratamos da importação e damos suporte local. A fábrica é parceira; a responsabilidade pela máquina é nossa." }
+const FAQS = {
+  pt: [
+    { q: "Porque não têm sala de exposição?", a: "Não mantemos stock parado em parque nem showroom com custos fixos. Trabalhamos em modelo direto de fábrica — direct-to-site — o que permite configurar a máquina à sua medida em vez de vender o que está disponível em exposição." },
+    { q: "Como sei que a máquina vem certa, sem a poder ver antes?", a: "Cada máquina é configurada por encomenda — motor, sistema hidráulico, engates rápidos — antes de entrar em produção. Antes do contentor ser selado, recebe um dossiê de inspeção pré-embarque: fotos e vídeo da máquina montada e testada na fábrica." },
+    { q: "Qual o papel da MedLink Trade nisto?", a: "A MedLink Trade é a nossa estrutura de importação: audita a fábrica, acompanha o controlo de qualidade antes do embarque e trata do desalfandegamento. A TRX responde pela máquina; a MedLink Trade responde pela transação internacional." },
+    { q: "E se precisar de assistência técnica depois de instalada?", a: "Peças críticas de desgaste rápido — filtros, vedantes, mangueiras, unidades de controlo elétrico — ficam em stock local, com entrega em 24 a 48 horas. Não precisa de deslocar a máquina." },
+    { q: "Porque não têm fábrica em Portugal?", a: "Não fabricamos em Portugal porque o valor não está no edifício — está na garantia. Produzimos em fábricas certificadas que auditamos diretamente, porque é aí que existe a escala e especialização que sustenta o preço e o prazo das máquinas. O que trazemos para Portugal é o controlo: inspecionamos antes do embarque, tratamos da importação e damos suporte local. A fábrica é parceira; a responsabilidade pela máquina é nossa." }
+  ],
+  en: [
+    { q: "Why don't you have a showroom?", a: "We don't keep stock sitting in a lot or a showroom with fixed overheads. We work on a direct-from-factory model — direct-to-site — which lets us configure the machine to your needs instead of selling whatever happens to be on display." },
+    { q: "How do I know the machine is right, without seeing it first?", a: "Every machine is configured to order — engine, hydraulic system, quick couplers — before it enters production. Before the container is sealed, you receive a pre-shipment inspection dossier: photos and video of the machine assembled and tested at the factory." },
+    { q: "What's MedLink Trade's role in this?", a: "MedLink Trade is our import structure: it audits the factory, oversees quality control before shipment and handles customs clearance. TRX answers for the machine; MedLink Trade answers for the international transaction." },
+    { q: "What if I need technical support after it's installed?", a: "Fast-moving critical parts — filters, seals, hoses, electrical control units — are kept in local stock, delivered within 24 to 48 hours. You don't need to move the machine." },
+    { q: "Why don't you manufacture in Portugal?", a: "We don't manufacture in Portugal because the value isn't in the building — it's in the guarantee. We produce in certified factories that we audit directly, because that's where the scale and specialisation that sustain the machines' price and lead time exist. What we bring to Portugal is control: we inspect before shipment, handle the import and provide local support. The factory is a partner; responsibility for the machine is ours." }
+  ],
+  es: [
+    { q: "¿Por qué no tienen sala de exposición?", a: "No mantenemos stock parado en un parque ni en un showroom con costes fijos. Trabajamos con un modelo directo de fábrica — direct-to-site — que permite configurar la máquina a su medida en lugar de vender lo que hay disponible en exposición." },
+    { q: "¿Cómo sé que la máquina viene bien, sin poder verla antes?", a: "Cada máquina se configura por encargo — motor, sistema hidráulico, enganches rápidos — antes de entrar en producción. Antes de que se selle el contenedor, recibe un dossier de inspección previa al embarque: fotos y vídeo de la máquina montada y probada en la fábrica." },
+    { q: "¿Cuál es el papel de MedLink Trade en esto?", a: "MedLink Trade es nuestra estructura de importación: audita la fábrica, supervisa el control de calidad antes del embarque y gestiona el despacho aduanero. TRX responde por la máquina; MedLink Trade responde por la transacción internacional." },
+    { q: "¿Y si necesito asistencia técnica después de instalada?", a: "Las piezas críticas de desgaste rápido — filtros, juntas, mangueras, unidades de control eléctrico — se mantienen en stock local, con entrega en 24 a 48 horas. No necesita desplazar la máquina." },
+    { q: "¿Por qué no fabrican en Portugal?", a: "No fabricamos en Portugal porque el valor no está en el edificio — está en la garantía. Producimos en fábricas certificadas que auditamos directamente, porque es ahí donde existe la escala y especialización que sostiene el precio y el plazo de las máquinas. Lo que traemos a Portugal es el control: inspeccionamos antes del embarque, gestionamos la importación y damos soporte local. La fábrica es socia; la responsabilidad de la máquina es nuestra." }
+  ]
+};
+
+const LANGS = ["pt", "en", "es"];
+
+const DIGGERS = [
+  { code: "TRX-1050", img: "trx-1050.png", preco: "12.850 €", specs: [
+    ["lblEngine", "Laidong 385, Euro V"], ["lblDigHeight", "3540 mm"], ["lblDumpHeight", "2000 mm"], ["lblDigDepth", "1650 mm"], ["lblDigRadius", "2900 mm"], ["lblLiftCap", "800 kg"], ["lblLiftForce", "25 kN"]
+  ]},
+  { code: "TRX-1070", img: "trx-1070.png", preco: "18.850 €", specs: [
+    ["lblEngine", "Yunnei 490, Euro V"], ["lblDigHeight", "2600 mm"], ["lblDumpHeight", "2000 mm"], ["lblDigDepth", "2000 mm"], ["lblDigRadius", "3400 mm"], ["lblLiftCap", "1200 kg"], ["lblLiftForce", "25 kN"]
+  ]},
+  { code: "TRX-3025", img: "trx-3025.png", preco: "28.850 €", specs: [
+    ["lblEngine", "Weichai 74 kW, Euro V"], ["lblRatedLoad", "2000 kg"], ["lblDumpHeight", "2800 mm"], ["lblDigRadius", "5175 mm"], ["lblTurnRadius", "4200 mm"], ["lblDumpReach", "1400 mm"], ["lblDigDepth", "3390 mm"], ["lblBackhoeBucket", "0,3 m³"], ["lblLoaderBucket", "1 m³"]
+  ]},
+  { code: "TRX-420D", img: "trx-420d.png", preco: "32.850 €", specs: [
+    ["lblEngine", "Weichai 74 kW, Euro V"], ["lblLoaderBucket", "1,35 m³"], ["lblLiftForce", "38 kN"], ["lblLoaderLiftCap", "2800 kg"], ["lblLoaderDumpHeight", "2800 mm"], ["lblLoaderDumpReach", "1062 mm"], ["lblBackhoeBucket", "0,3 m³"], ["lblDigDepth", "4100 mm"], ["lblHydraulicPressure", "22 MPa"]
+  ]},
+  { code: "TRX-425", img: "trx-425.png", preco: "42.850 €", specs: [
+    ["lblEngine", "Weichai 74 kW, Euro V"], ["lblLoaderBucket", "1,35 m³"], ["lblMaxLoadHeight", "2800 mm"], ["lblDumpReach", "1062 mm"], ["lblTurnRadius", "6581 mm"], ["lblBackhoeBucket", "0,3 m³"], ["lblDigDepth", "4100 mm"]
+  ]}
+];
+
+const CARRIERS = [
+  { name: "MSC", logo: "msc.svg", price: 2100 },
+  { name: "CMA CGM", logo: "cma-cgm.svg", price: 2200 },
+  { name: "Maersk", logo: "maersk.png", price: 2350 }
 ];
 
 class Component extends DCLogic {
-  state = { selIdx: 0, faqOpen: 0 };
+  state = { selIdx: 0, dSelIdx: 0, faqOpen: 0, lang: "pt", buyOpen: false, buyStep: 0, buyCarrierIdx: null, buyModelCode: "" };
+
+  componentDidMount() {
+    try {
+      const saved = localStorage.getItem("medlink_lang");
+      if (saved && T[saved]) this.setState({ lang: saved });
+    } catch (e) {}
+  }
+
+  setLang(l) {
+    this.setState({ lang: l });
+    try { localStorage.setItem("medlink_lang", l); } catch (e) {}
+  }
 
   renderVals() {
     const s = this.state;
+    const t = T[s.lang];
     const cur = CATALOGO[s.selIdx];
+    const curD = DIGGERS[s.dSelIdx];
+    const tireLabel = { f500r400: t.tire_f500r400, f650r500: t.tire_f650r500, solid: t.tire_solid }[cur.tireKey];
+    const cheapest = Math.min(...CARRIERS.map(c => c.price));
+    const carrier = s.buyCarrierIdx != null ? CARRIERS[s.buyCarrierIdx] : null;
     return {
+      t,
+      buyOpen: s.buyOpen,
+      isBuyStep0: s.buyStep === 0, isBuyStep1: s.buyStep === 1, isBuyStep2: s.buyStep === 2, isBuyStep3: s.buyStep === 3,
+      buySteps: [0, 1, 2, 3].map(i => ({ color: i <= s.buyStep ? "#F4AC0C" : "#dddddd" })),
+      carriers: CARRIERS.map((c, i) => ({
+        name: c.name, logo: c.logo, priceFmt: c.price.toLocaleString("pt-PT"),
+        cheapest: c.price === cheapest,
+        select: () => this.setState({ buyCarrierIdx: i, buyStep: 2 })
+      })),
+      buyCarrierName: carrier ? carrier.name : "",
+      buyCarrierPriceFmt: carrier ? carrier.price.toLocaleString("pt-PT") : "",
+      openBuyForklift: () => this.setState({ buyOpen: true, buyStep: 0, buyCarrierIdx: null, buyModelCode: cur.code }),
+      openBuyDigger: () => this.setState({ buyOpen: true, buyStep: 0, buyCarrierIdx: null, buyModelCode: curD.code }),
+      buyModelCode: s.buyModelCode,
+      closeBuy: () => this.setState({ buyOpen: false, buyStep: 0, buyCarrierIdx: null }),
+      toBuyStep1: () => this.setState({ buyStep: 1 }),
+      toBuyStep3: () => this.setState({ buyStep: 3 }),
+      langs: LANGS.map(l => ({ code: l.toUpperCase(), select: () => this.setLang(l), color: l === s.lang ? "#F4AC0C" : "#8a8a8a" })),
       catalogo: CATALOGO.map((m, i) => ({
         code: m.code, load: m.load,
         select: () => this.setState({ selIdx: i }),
         rule: i === s.selIdx ? "#F4AC0C" : "transparent",
-        ink: i === s.selIdx ? "#F4AC0C" : "#f2f2f0"
+        ink: i === s.selIdx ? "#F4AC0C" : "#0a0a0a"
       })),
       sel: {
         code: cur.code,
         img: cur.img,
         specs: [
-          ["Capacidade de carga", cur.kg],
-          ["Altura de elevação", "3000 mm"],
-          ["Comprimento total", cur.len],
-          ["Largura total", cur.w],
-          ["Altura total", cur.h],
-          ["Peso próprio", cur.mass],
-          ["Motores (elevação / tração)", cur.motor],
-          ["Tensão", cur.volt + " (personalizável)"],
-          ["Bateria", "Chumbo-ácido ou lítio"],
-          ["Pneus", cur.tire]
+          [t.spec_load, cur.kg],
+          [t.spec_liftheight, "3000 mm"],
+          [t.spec_length, cur.len],
+          [t.spec_width, cur.w],
+          [t.spec_height, cur.h],
+          [t.spec_weight, cur.mass],
+          [t.spec_motors, cur.motor],
+          [t.spec_voltage, cur.volt + " (" + t.customisable + ")"],
+          [t.spec_battery, t.battery_value],
+          [t.spec_tires, tireLabel]
         ].map(([k, v]) => ({ k, v }))
       },
       counter: String(s.selIdx + 1).padStart(2, "0") + " / " + CATALOGO.length,
       prev: () => this.setState({ selIdx: (s.selIdx - 1 + CATALOGO.length) % CATALOGO.length }),
       next: () => this.setState({ selIdx: (s.selIdx + 1) % CATALOGO.length }),
-      faqs: FAQS.map((f, i) => ({
+      diggers: DIGGERS.map((m, i) => ({
+        code: m.code,
+        select: () => this.setState({ dSelIdx: i }),
+        rule: i === s.dSelIdx ? "#F4AC0C" : "transparent",
+        ink: i === s.dSelIdx ? "#F4AC0C" : "#0a0a0a"
+      })),
+      selD: {
+        code: curD.code,
+        img: curD.img,
+        preco: curD.preco,
+        specs: curD.specs.map(([k, v]) => ({ k: t[k], v }))
+      },
+      counterD: String(s.dSelIdx + 1).padStart(2, "0") + " / " + DIGGERS.length,
+      prevD: () => this.setState({ dSelIdx: (s.dSelIdx - 1 + DIGGERS.length) % DIGGERS.length }),
+      nextD: () => this.setState({ dSelIdx: (s.dSelIdx + 1) % DIGGERS.length }),
+      faqs: FAQS[s.lang].map((f, i) => ({
         q: f.q, a: f.a,
         open: s.faqOpen === i,
         sign: s.faqOpen === i ? "\u2013" : "+",
@@ -281,6 +624,7 @@ class Component extends DCLogic {
     };
   }
 }
+
 </script>
 </body>
 </html>
